@@ -1,8 +1,8 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const mongoose = ("mongoose");
-const logger = ("morgan");
+const mongoose = require("mongoose");
+const logger = require("morgan");
 const routes = require("./routes");
 
 const PORT = process.env.PORT || 3001;
