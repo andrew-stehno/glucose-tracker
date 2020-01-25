@@ -15,11 +15,11 @@
 // export default App;
 
 import React from "react";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./components/Profile";
+import Profile from "./components/Profile/Profile";
 import history from "./utils/history";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
