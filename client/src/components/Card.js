@@ -20,6 +20,6 @@ const card = (props) => {
       </Col>
     </Row>
   );
-};
+}
 
 export default card;

@@ -83,6 +83,6 @@ const carousel = (props) => {
       </Carousel>
     </div>
   );
-};
+}
 
 export default carousel;

@@ -34,7 +34,7 @@ const footer = (props) => {
       </Container>
       <div className="footer-copyright text-center py-3">
         <Container fluid>
-          <a>Copyright:Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart</a>
+          <p>Copyright:Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart</p>
         </Container>
       </div>
     </div>
