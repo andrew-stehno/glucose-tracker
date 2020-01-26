@@ -1,0 +1,26 @@
+
+/* Typography=================== */
+
+.profileTitle {
+    font-size: 20px;
+}
+
+.profileText {
+    font-size: 12px;
+}
+
+.profileBody {
+    font-size: 10px;
+}
+
+.profileEmail {
+    font-size: 15px;
+}
+
+/* ============================ */
+
+/* Card Sizing ================ */
+
+.profileCard {
+    width: 90px;
+}
