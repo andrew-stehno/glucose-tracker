@@ -6,7 +6,7 @@ import {
 } from 'reactstrap';
 import "./ProfileCard.css";
 
-const Profile = () => {
+const ProfileCard = () => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {
@@ -14,6 +14,7 @@ const Profile = () => {
   }
 
   return (
+
       <Col md="2">
         <Card className="profileCard">
           <CardImg top width="100%" src={user.picture} alt="User google image" />
@@ -28,4 +29,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileCard;
