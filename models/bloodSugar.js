@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const glucoseSchema = new Schema({
   glucose: { type: Number, required: true },
-  date: { type: Date, default: Date.now }
+  date: { type: Date }
 });
 
 const Glucose = mongoose.model("Glucose", glucoseSchema);

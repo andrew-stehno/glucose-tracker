@@ -4,7 +4,6 @@ import { Row, Container, col } from "reactstrap";
 
 const Profile = () => {
         return (
-            <NavBar/>,
             <Container>
                 <Row>
                     <ProfileCard/>

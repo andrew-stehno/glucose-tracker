@@ -13,11 +13,11 @@ const App = () => (
         <NavBar/>
       </header>
 
-      <switch>
+      <Switch>
         {/* <Route exact path="/home" component={Home} /> */}
         <Route path="/" exact />
-        <PrivateRoute path="/profile" component={Profile} />
-      </switch>
+        <PrivateRoute path="/Profile" component={Profile} />
+      </Switch>
 
     </Router>
   </div>
