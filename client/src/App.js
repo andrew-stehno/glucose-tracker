@@ -2,7 +2,7 @@ import React from "react";
 import history from "./utils/history";
 import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./pages/Profile";
+import Profile from "./pages/profile";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 // import Home from "../src/pages/Login/Home";
 
