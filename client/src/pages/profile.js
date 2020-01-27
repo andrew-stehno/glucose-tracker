@@ -6,12 +6,12 @@ import { Row, Container, Col } from "reactstrap";
 const Profile = () => {
   return (
     <Container>
-      <h1>hello</h1>
+
       <Row>
-        <Col md="2">
+        <Col md="3">
           <ProfileCard />
         </Col>
-        <Col md="10">
+        <Col md="8">
           <Form />
         </Col>
       </Row>
