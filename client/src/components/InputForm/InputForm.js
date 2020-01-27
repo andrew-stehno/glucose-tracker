@@ -33,7 +33,7 @@ class FormPage extends React.Component {
               type="text"
               name="glucose levels"
               id="glucoseLevels"
-              placeholder="Enter data"
+              placeholder="mg/dl"
             />
           </FormGroup>
           <Button>Submit</Button>
