@@ -7,11 +7,11 @@ const Profile = () => {
   return (
     <Container>
       <Row>
-        <Col md="2">
+        <Col md="3">
           <ProfileCard />
         </Col>
-        <Col md="10">
-          <FormPage />
+        <Col md="8">
+          <Form />
         </Col>
       </Row>
     </Container>

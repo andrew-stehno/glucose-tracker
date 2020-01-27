@@ -4,7 +4,7 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Col
 } from 'reactstrap';
-import "./ProfileCard.css";
+// import "./ProfileCard.css";
 
 const ProfileCard = () => {
   const { loading, user } = useAuth0();
@@ -15,7 +15,6 @@ const ProfileCard = () => {
 
   return (
 
-      <Col md="2">
         <Card className="profileCard">
           <CardImg top width="100%" src={user.picture} alt="User google image" />
           <CardBody>
@@ -25,7 +24,6 @@ const ProfileCard = () => {
             <CardText><code>{JSON.stringify(user, null, 2)}</code></CardText>
           </CardBody>
         </Card>
-      </Col>
   );
 };
 
