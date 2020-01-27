@@ -12,11 +12,6 @@ import {
   NavbarText
 } from 'reactstrap';
 import "./NavBar.css";
-import ProfilePopover from "../Popover/Popover";
-
-
-
-
 
 const navBar = (props) => {
   const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
@@ -29,29 +24,22 @@ const navBar = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-    console.log(user + " This is the user")
   
   return (
       <div>
         <Navbar color="light" light expand="md">
           <NavbarBrand id="Popover1">
-          <img className="img-fluid navBarProfile" src="https://pbs.twimg.com/media/EFvCuCLUEAAaxsC.jpg" alt="suspicious snek"></img>
-          <ProfilePopover/>
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="mr-auto" navbar>
               <NavItem>
                 {isAuthenticated && (
                   <NavItem>
                   <NavLink href="/">Home</NavLink>
                   
-                  {/* <NavLink href="/profile">Profile</NavLink> */}
+                  <NavLink href="/profile">Profile</NavLink>
 
-                  <NavLink href="/profile">
-                    {/* <img className="img-fluid" src="./snek.png" alt="suspicious snek"></img> */}
-                    
-                    </NavLink>
                   </NavItem>
                 )}
             <NavItem>
