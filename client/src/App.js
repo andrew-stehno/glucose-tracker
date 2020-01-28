@@ -5,7 +5,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import Profile from "./pages/profile";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 // import Home from "../src/pages/Login/Home";
-//import DiabetesChart from "./components/DiabetesChart";
+
 
 const App = () => (
   <div className="App">

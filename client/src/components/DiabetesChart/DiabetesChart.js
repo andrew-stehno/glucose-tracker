@@ -8,6 +8,7 @@ import {
 import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
 
 
+
 const generateData = (start, end, step) => {
   const data = [{
     value: 1.12312,
