@@ -21,7 +21,7 @@ const ProfileCard = () => {
             <CardTitle className="profileTitle">{user.name}</CardTitle>
             <CardSubtitle className="profileEmail">{user.email}</CardSubtitle>
             <CardText className="profileText">HEY FUCKER</CardText>
-            <CardText><code>{JSON.stringify(user, null, 2)}</code></CardText>
+            {/* <CardText><code>{JSON.stringify(user, null, 2)}</code></CardText> */}
           </CardBody>
         </Card>
   );
