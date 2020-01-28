@@ -28,21 +28,23 @@ const navBar = (props) => {
   return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand id="Popover1">
+          <NavbarBrand>Sugar Pin
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-            <Nav className="mr-auto" navbar>
+            <Nav className="ml-auto" navbar>
               <NavItem>
                 {isAuthenticated && (
                   <NavItem>
-                  <NavLink href="/">Home</NavLink>
-                  
                   <NavLink href="/profile">Profile</NavLink>
-
                   </NavItem>
                 )}
-            <NavItem>
+              </NavItem>
+              <NavItem>
+              <NavLink href="/">Home</NavLink>
+              </NavItem>
+
+              <NavItem>
                 {!isAuthenticated && (
                   <button onClick={() => loginWithRedirect({})}>Log in</button>
                 )}
@@ -52,7 +54,6 @@ const navBar = (props) => {
                 {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
               </NavItem>
 
-              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
