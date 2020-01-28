@@ -1,5 +1,5 @@
 import ProfileCard from "../components/ProfileCard/ProfileCard";
-import FormPage from "../components/InputForm/InputForm";
+import InputForm from "../components/InputForm/InputForm";
 import React from "react";
 import { Row, Container, Col } from "reactstrap";
 
@@ -11,7 +11,7 @@ const Profile = () => {
           <ProfileCard />
         </Col>
         <Col md="8">
-          <FormPage />
+          <InputForm />
         </Col>
       </Row>
     </Container>
