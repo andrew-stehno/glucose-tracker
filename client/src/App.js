@@ -6,13 +6,14 @@ import Profile from "./pages/profile";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 // import Home from "../src/pages/Login/Home";
 
+
 const App = () => (
   <div className="App">
     <Router history={history}>
       <header>
         <NavBar/>
       </header>
-
+      {/* <DiabetesChart/> */}
       <Switch>
         {/* <Route exact path="/home" component={Home} /> */}
         <Route path="/" exact />
