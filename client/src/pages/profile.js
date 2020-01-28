@@ -11,7 +11,7 @@ const Profile = () => {
           <ProfileCard />
         </Col>
         <Col md="8">
-          <Form />
+          <FormPage />
         </Col>
       </Row>
     </Container>
