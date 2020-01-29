@@ -3,38 +3,54 @@ import {
   Chart,
   ArgumentAxis,
   ValueAxis,
-  SplineSeries
+  SplineSeries,
+  Legend,
+  Title,
+  ZoomAndPan
 } from "@devexpress/dx-react-chart-bootstrap4";
+import { Animation } from '@devexpress/dx-react-chart';
 import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
 
 
 const generateData = (start, end, step) => {
   const data = [{
-    "value": 150.12312,
-    "argument": 1
+    "value": 85.12312,
+    "high" : 130,
+    "low" : 80,
+    "date": 1
   },
   {
-    "value": 175.432232,
-    "argument": 2
+    "value": 100.43,
+    "high" : 130,
+    "low" : 80,
+    "date": 2
   },
   {
-    "value": 200.45433,
-    "argument": 3
+    "value": 150.45433,
+    "high" : 130,
+    "low" : 80,
+    "date": 3
   },{
-    "value": 199.12312,
-    "argument": 4
+    "value": 40.12312,
+    "high" : 130,
+    "low" : 80,
+    "date": 4
   },
   {
-    "value": 125.432232,
-    "argument": 5
+    "value": 110.432232,
+    "date": 5
   },
   {
-    "value": 123.45433,
-    "argument": 6
+    "value": 100.45433,
+    "high" : 130,
+    "low" : 80,
+    "date": 6
   },
   {
-    "value": 103.45433,
-    "argument": 6
+    "value": 80.45433,
+    "high" : 130,
+    "low" : 80,
+    "date": 7
   }];
   // for (let i = start; i < end; i += step) {
   //   data.push({ value: Math.sin(i) / i, argument: i });
@@ -50,18 +66,24 @@ export default class DiabetesChart extends React.PureComponent {
     super(props);
 
     this.state = {
-      data: generateData(150, 200, 1)
+      data: generateData(30, 200, 1)
     };
   }
   render() {
     const { data } = this.state;
 
     return (
-      <Chart data={data} width={650} height={500}>
+      <Chart data={data} width={"auto"} height={600}>
         <ArgumentAxis showGrid />
-        <ValueAxis />
+        <ValueAxis showLabels="true"/>
 
-        <SplineSeries name="sin" valueField="value" argumentField="argument" />
+        <SplineSeries name="mg/dl" valueField="value" argumentField="date" />
+        <SplineSeries name="high" valueField="high" argumentField="date"/>
+        <SplineSeries name="low" valueField="low" argumentField="date" />
+        <Animation />
+          <Legend />
+          <ZoomAndPan />
+          <Title text="My Glucose Chart" />
       </Chart>
     );
   }

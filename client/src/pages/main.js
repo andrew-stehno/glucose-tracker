@@ -26,7 +26,6 @@ class Main extends React.Component {
     this.setState({
       startDate: date
     });
-    // console.log("Date: " + this.state.startDate);
   };
 
   handleInputChange = event => {
@@ -34,11 +33,9 @@ class Main extends React.Component {
     this.setState({
       [name]: value
     });
-    // console.log("level: " + this.state.glucoseLevel);
   };
 
   saveToDatabase = () => {
-    console.log(this.state.startDate, this.state.glucoseLevel);
     API.saveData({
       date: this.state.startDate,
       glucose: this.state.glucoseLevel
@@ -46,13 +43,16 @@ class Main extends React.Component {
       .then(res => {
         let date = this.state.startDate;
         console.log("Date: " + date);
-        API.getByDay({date})
-        .then(res => {
-          this.setState({results: res.data, glucose: "", startDate: new Date()})
-        })
+        API.getByDay(date).then(res => {
+          this.setState({
+            results: res.data,
+            startDate: new Date(),
+            glucoseLevel: ""
+          });
+          console.log(this.state.results);
+        });
       })
       .catch(err => console.log(err));
-      
   };
 
   render() {
