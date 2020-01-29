@@ -19,7 +19,7 @@ class Main extends React.Component {
   state = {
     startDate: new Date(),
     glucoseLevel: "",
-    results: {}
+    results: []
   };
 
   handleChange = date => {
@@ -38,7 +38,7 @@ class Main extends React.Component {
   };
 
   saveToDatabase = () => {
-    // console.log(this.state.startDate, this.state.glucoseLevel);
+    console.log(this.state.startDate, this.state.glucoseLevel);
     API.saveData({
       date: this.state.startDate,
       glucose: this.state.glucoseLevel
@@ -84,7 +84,7 @@ class Main extends React.Component {
                     placeholder="mg/dl"
                   />
                 </FormGroup>
-                <Button onClick={() => this.saveToDatabase()}>Submit</Button>
+                <Button onClick={() => {console.log(this); this.saveToDatabase()}}>Submit</Button>
               </Form>
               <br />
               <DiabetesChart />
