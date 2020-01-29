@@ -42,6 +42,7 @@ class Main extends React.Component {
     })
       .then(res => {
         let date = this.state.startDate;
+        console.log("Date: " + date);
         API.getByDay(date).then(res => {
           this.setState({
             results: res.data,
