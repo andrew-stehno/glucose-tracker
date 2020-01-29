@@ -1,8 +1,12 @@
 import axios from "axios";
 
 export default {
-// Save input data to database
-saveData: function(data) {
+  // Gets data by day
+  getByDay: function(date) {
+    return axios.get("/api/glucose/" + date);
+  },
+  // Save input data to database
+  saveData: function(data) {
     return axios.post("/api/glucose/", data);
-}
+  }
 };

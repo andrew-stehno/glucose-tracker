@@ -8,19 +8,18 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  NavbarText
+  NavLink
 } from 'reactstrap';
 import "./NavBar.css";
 
 const navBar = (props) => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
-  const [collapsed, setCollapsed] = useState(true);
+  // const [collapsed, setCollapsed] = useState(true);
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  // const toggleNavbar = () => setCollapsed(!collapsed);
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -36,7 +35,7 @@ const navBar = (props) => {
               <NavItem>
                 {isAuthenticated && (
                   <NavItem>
-                  <NavLink href="/profile">Profile</NavLink>
+                  <NavLink href="/main">The Shit</NavLink>
                   </NavItem>
                 )}
               </NavItem>
