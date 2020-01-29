@@ -84,7 +84,7 @@ class Main extends React.Component {
                     placeholder="mg/dl"
                   />
                 </FormGroup>
-                <Button onClick={() => {console.log(this); this.saveToDatabase()}}>Submit</Button>
+                <Button onClick={() => this.saveToDatabase()}>Submit</Button>
               </Form>
               <br />
               <DiabetesChart />
