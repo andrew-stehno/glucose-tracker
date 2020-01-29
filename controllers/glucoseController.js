@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
   find: function(req, res) {
     db.Glucose
-      .find({"date": {"gte": new Date(req.query), "$lt": new Date(2020, 01, 29)}})
+      .find({"date": {"$gt": new Date(req.params.date), "$lt": new Date(2020, 29, 1)}})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
