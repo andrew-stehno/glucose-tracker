@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import {
   Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Col, Row
+  CardTitle, CardSubtitle, Col
 } from 'reactstrap';
 
 const Profile = () => {
