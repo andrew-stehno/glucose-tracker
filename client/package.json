@@ -4,14 +4,15 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
-    "mongoose": "^5.8.9",
-    "morgan": "^1.9.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.6.3",
+    "react-datepicker": "^2.11.0",
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "^2.1.1",
-    "reactstrap": "^8.4.0"
+    "reactstrap": "^8.4.0",
+    "@devexpress/dx-react-chart": "^2.4.0",
+    "@devexpress/dx-react-chart-bootstrap4": "^2.4.0",
+    "@devexpress/dx-react-core": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

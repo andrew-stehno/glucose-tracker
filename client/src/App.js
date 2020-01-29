@@ -1,10 +1,11 @@
 import React from "react";
 import history from "./utils/history";
 import NavBar from "./components/NavBar/NavBar";
-import { Router, Route } from "react-router-dom";
-import Profile from "./components/ProfileCard/ProfileCard";
+import { Router, Route, Switch } from "react-router-dom";
+import Main from "./pages/main";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import Home from "./pages/Login/Home";
+import Home from "./pages/Login/Login";
+
 
 const App = () => (
   <div className="App">
@@ -12,11 +13,13 @@ const App = () => (
       <header>
         <NavBar />
       </header>
-      <body>
+      {/* <DiabetesChart/> */}
+      <Switch>
+        {/* <Route exact path="/home" component={Home} /> */}
         <Route path="/" exact />
-        <PrivateRoute path="/profile" component={Profile} />
-        <PrivateRoute path="/home" component={Home} />
-      </body>
+        <PrivateRoute exact path="/main" component={Main} />
+      </Switch>
+
     </Router>
   </div>
 )

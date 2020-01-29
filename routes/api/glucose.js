@@ -1,12 +1,16 @@
 const router = require("express").Router();
 const glucoseController = require("../../controllers/glucoseController");
 
-// Matches with "/api/books"
-router.route("/")
+// Matches with "/api/glucose"
+router
+  .route("/")
   .get(glucoseController.findAll)
   .post(glucoseController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/glucose/:date"
+router.route("/:date").get(glucoseController.find);
+
+// Matches with "/api/glucose/:id"
 router
   .route("/:id")
   .get(glucoseController.findById)

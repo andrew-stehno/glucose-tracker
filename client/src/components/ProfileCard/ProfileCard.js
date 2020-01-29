@@ -1,11 +1,12 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Col
+  Card, CardImg, CardBody,
+  CardTitle, CardSubtitle
 } from 'reactstrap';
+// import "./ProfileCard.css";
 
-const Profile = () => {
+const ProfileCard = () => {
   const { loading, user } = useAuth0();
 
   if (loading || !user) {
@@ -13,18 +14,16 @@ const Profile = () => {
   }
 
   return (
-      <Col md="4">
-        <Card>
+
+        <Card className="profileCard">
           <CardImg top width="100%" src={user.picture} alt="User google image" />
           <CardBody>
-            <CardTitle>{user.name}</CardTitle>
-            <CardSubtitle>{user.email}</CardSubtitle>
-            <CardText>HEY FUCKER</CardText>
-            <CardText><code>{JSON.stringify(user, null, 2)}</code></CardText>
+            <CardTitle className="profileTitle">{user.name}</CardTitle>
+            <CardSubtitle className="profileEmail">{user.email}</CardSubtitle>
+            {/* <CardText><code>{JSON.stringify(user, null, 2)}</code></CardText> */}
           </CardBody>
         </Card>
-      </Col>
   );
 };
 
-export default Profile;
+export default ProfileCard;
