@@ -1,6 +1,6 @@
 //import React from "react";
 import { useAuth0 } from "../../react-auth0-spa";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Collapse,
   Navbar,
@@ -9,10 +9,10 @@ import {
   Nav,
   NavItem,
   NavLink
-} from 'reactstrap';
+} from "reactstrap";
 import "./NavBar.css";
 
-const navBar = (props) => {
+const navBar = props => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   // const [collapsed, setCollapsed] = useState(true);
@@ -23,52 +23,40 @@ const navBar = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
-  
   return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand>Sugar Pin
-          </NavbarBrand>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand>Sugar Pin</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            {/* <NavItem> */}
+            {isAuthenticated && (
               <NavItem>
-                {isAuthenticated && (
-                  <NavItem>
-                  <NavLink href="/main">The Shit</NavLink>
-                  </NavItem>
-                )}
+                <NavLink href="/main">The Shit</NavLink>
               </NavItem>
-              <NavItem>
+            )}
+            {/* </NavItem> */}
+            <NavItem>
               <NavLink href="/">Home</NavLink>
-              </NavItem>
+            </NavItem>
 
-              <NavItem>
-                {!isAuthenticated && (
-                  <button onClick={() => loginWithRedirect({})}>Log in</button>
-                )}
-              </NavItem>
+            <NavItem>
+              {!isAuthenticated && (
+                <button onClick={() => loginWithRedirect({})}>Log in</button>
+              )}
+            </NavItem>
 
-              <NavItem>
-                {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
-              </NavItem>
-
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
-    );
-}
+            <NavItem>
+              {isAuthenticated && (
+                <button onClick={() => logout()}>Log out</button>
+              )}
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
+  );
+};
 
 export default navBar;
-
-
-
-
-
-
-
-
-
-
-
