@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 
-const card = (props) => {
+const ArticleCard = (props) => {
   return (
     <Row>
       <Col sm="6">
@@ -22,4 +22,4 @@ const card = (props) => {
   );
 }
 
-export default card;
+export default ArticleCard;
