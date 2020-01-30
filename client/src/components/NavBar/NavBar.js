@@ -35,7 +35,7 @@ const navBar = (props) => {
               <NavItem>
                 {isAuthenticated && (
                   <NavItem>
-                  <NavLink href="/main">The Shit</NavLink>
+                  <NavLink href="/main">Main</NavLink>
                   </NavItem>
                 )}
               </NavItem>
