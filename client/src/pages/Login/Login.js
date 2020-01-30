@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer";
-import { Container } from "reactstrap";
 
 
 
 
-const Home = () => {
+
+const Login = () => {
     return (
+        <div>
         <Jumbotron />,
         <Footer />
-        
+        </div>
+    )
 
 };
 
  
 
-export default Home;
+export default Login;
 

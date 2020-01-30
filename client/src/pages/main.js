@@ -14,6 +14,7 @@ import {
   Label,
   Input
 } from "reactstrap";
+import AlertHelper from "../components/AlertHelper/AlertHelper";
 
 class Main extends React.Component {
   state = {
@@ -88,6 +89,7 @@ class Main extends React.Component {
               </Form>
               <br />
               <DiabetesChart />
+              <AlertHelper />
             </Col>
           </Row>
         </Container>
