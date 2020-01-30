@@ -4,14 +4,14 @@ import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/main";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-// import Home from "../src/pages/Login/Home";
+import Home from "./pages/Login/Login";
 
 
 const App = () => (
   <div className="App">
     <Router history={history}>
       <header>
-        <NavBar/>
+        <NavBar />
       </header>
       {/* <DiabetesChart/> */}
       <Switch>
@@ -25,3 +25,7 @@ const App = () => (
 )
 
 export default App;
+
+
+
+
