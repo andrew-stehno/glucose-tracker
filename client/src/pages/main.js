@@ -1,33 +1,31 @@
+import React from "react";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
-import React from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import InputForm from "../components/InputForm/InputForm"
 import API from "../utils/API";
 import {
   Row,
   Container,
   Col,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input
 } from "reactstrap";
 // import AlertHelper from "../components/AlertHelper/AlertHelper";
 
 class Main extends React.Component {
   state = {
-    startDate: new Date(),
+    today: new Date(),
     glucoseLevel: "",
     results: [],
     chartData: []
   };
 
-  handleChange = date => {
-    this.setState({
-      startDate: date
-    });
+  componentDidMount() {
+    this.setDate()
+  };
+
+  setDate = () => {
+    const todaysDate = this.state.today;
+    const formDate = todaysDate.getFullYear() + '/' + (todaysDate.getMonth() +1) + '/' + todaysDate.getDate();
+    document.getElementById("dateStamp").innerHTML=formDate;
   };
 
   handleInputChange = event => {
@@ -40,16 +38,16 @@ class Main extends React.Component {
   saveToDatabase = () => {
     // Post data to database:
     API.saveData({
-      date: this.state.startDate,
+      date: this.state.today,
       glucose: this.state.glucoseLevel
     })
       .then(res => {
-        let date = this.state.startDate;
+        let date = this.state.today;
         // Get data from db by specific day:
         API.getByDay(date).then(res => {
           this.setState({
             results: res.data,
-            startDate: new Date(),
+            today: new Date(),
             glucoseLevel: ""
           });
           // Massage raw data into useable data:
@@ -128,29 +126,12 @@ class Main extends React.Component {
               <ProfileCard />
             </Col>
             <Col md="9">
-              <Form>
-                <h4>Date</h4>
-                <FormGroup>
-                  <DatePicker
-                    selected={this.state.startDate}
-                    onChange={this.handleChange}
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <Label for="glucose reading">
-                    <h4>Glucose Levels</h4>
-                  </Label>
-                  <Input
-                    type="text"
-                    name="glucoseLevel"
-                    value={this.state.glucoseLevel}
-                    onChange={this.handleInputChange}
-                    placeholder="mg/dl"
-                  />
-                </FormGroup>
-                <Button onClick={() => this.saveToDatabase()}>Submit</Button>
-              </Form>
-              <br />
+                <h4 id="dateStamp"></h4>
+              <InputForm 
+                saveToDatabase={this.saveToDatabase}
+                value={this.state.glucoseLevel}
+                onChange={this.handleInputChange}
+              />
               <DiabetesChart 
                 results={this.state.results}
                 generateData={this.generateData}
