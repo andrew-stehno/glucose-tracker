@@ -1,14 +1,10 @@
 import React from "react";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
-import InputForm from "../components/InputForm/InputForm"
+import InputForm from "../components/InputForm/InputForm";
 import API from "../utils/API";
 import { format, compareAsc } from "date-fns";
-import {
-  Row,
-  Container,
-  Col,
-} from "reactstrap";
+import { Row, Container, Col } from "reactstrap";
 // import AlertHelper from "../components/AlertHelper/AlertHelper";
 
 class Main extends React.Component {
@@ -20,13 +16,13 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    this.setDate()
-    this.getFromDatabase()
-  };
+    this.setDate();
+    this.getFromDatabase();
+  }
 
   setDate = () => {
-    const todaysDate = format(new Date(), 'MM/dd/yyyy')
-    document.getElementById("dateStamp").innerHTML=todaysDate;
+    const todaysDate = format(new Date(), "MM/dd/yyyy");
+    document.getElementById("dateStamp").innerHTML = todaysDate;
   };
 
   handleInputChange = event => {
@@ -41,37 +37,38 @@ class Main extends React.Component {
       date: this.state.today,
       glucose: this.state.glucoseLevel
     })
-    .then(res => {
-      this.getFromDatabase()
-    })
-    .catch(err => console.log(err));
+      .then(res => {
+        this.getFromDatabase();
+      })
+      .catch(err => console.log(err));
   };
-  
+
   getFromDatabase = () => {
     let date = this.state.today;
-    API.getByDay(date).then(res => {
-      this.setState({
-        results: res.data,
-        today: new Date(),
-        glucoseLevel: ""
-      });
-      // Massage raw data into useable data:
-      const resData = this.state.results;
-      const newArray = [];
-      for (let i = 0; i < resData.length; i++) {
-        const item = resData[i];
-        let newObj = {
-          "value": item.glucose,
-          "high": 130,
-          "low": 80,
-          "date": [i],
-          "realDate": item.date
+    API.getByDay(date)
+      .then(res => {
+        this.setState({
+          results: res.data,
+          today: new Date(),
+          glucoseLevel: ""
+        });
+        // Massage raw data into useable data:
+        const resData = this.state.results;
+        const newArray = [];
+        for (let i = 0; i < resData.length; i++) {
+          const item = resData[i];
+          let newObj = {
+            "value": item.glucose,
+            "high": 130,
+            "low": 80,
+            "date": [i],
+            "realDate": item.date
+          };
+          newArray.push(newObj);
         }
-        newArray.unshift(newObj);
-      }
-      this.setState({chartData: newArray});
-      console.log(this.state.chartData);
-    })
+        this.setState({ chartData: newArray });
+      })
+      .catch(err => console.log(err));
   };
 
   generateData = (start, end, step) => {
@@ -116,7 +113,7 @@ class Main extends React.Component {
     //   "date": 70
     // }];
     // console.log("data", data);
-    
+
     return data;
   };
 
@@ -129,13 +126,13 @@ class Main extends React.Component {
               <ProfileCard />
             </Col>
             <Col md="9">
-                <h4 id="dateStamp"></h4>
-              <InputForm 
+              <h4 id="dateStamp"></h4>
+              <InputForm
                 saveToDatabase={this.saveToDatabase}
                 value={this.state.glucoseLevel}
                 onChange={this.handleInputChange}
               />
-              <DiabetesChart 
+              <DiabetesChart
                 results={this.state.results}
                 generateData={this.generateData}
               />
