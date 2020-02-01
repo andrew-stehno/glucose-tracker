@@ -5,14 +5,16 @@ import InputForm from "../components/InputForm/InputForm";
 import API from "../utils/API";
 import { format } from "date-fns";
 import { Row, Container, Col } from "reactstrap";
-// import AlertHelper from "../components/AlertHelper/AlertHelper";
+import AlertHelper from "../components/AlertHelper/AlertHelper";
+
 
 class Main extends React.Component {
   state = {
     today: new Date(),
     glucoseLevel: "",
     results: [],
-    chartData: []
+    chartData: [],
+    isModalOpen: false
   };
 
   componentDidMount() {
@@ -32,6 +34,11 @@ class Main extends React.Component {
     });
   };
 
+  toggleModal = () => {
+    this.setState({isModalOpen: !this.state.isModalOpen}) 
+    
+  }
+
   saveToDatabase = () => {
     API.saveData({
       date: this.state.today,
@@ -40,6 +47,9 @@ class Main extends React.Component {
       .then(res => {
         this.getFromDatabase();
       })
+        .then(() => {
+          this.toggleModal()
+        }) 
       .catch(err => console.log(err));
   };
 
@@ -83,7 +93,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
+      
         <Container>
           <Row>
             <Col md="3">
@@ -96,15 +106,19 @@ class Main extends React.Component {
                 value={this.state.glucoseLevel}
                 onChange={this.handleInputChange}
               />
+              
               <DiabetesChart
                 results={this.state.results}
                 generateData={this.generateData}
               />
-              {/* <AlertHelper /> */}
+              
             </Col>
           </Row>
+          <AlertHelper
+          isOpen={this.state.isModalOpen}
+          toggle={this.toggleModal} />
         </Container>
-      </div>
+      
     );
   }
 }
