@@ -5,7 +5,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main";
 import Search from "./pages/Search";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-// import Home from "./pages/Login/Login";
+import Login from "./pages/Login/Login";
 
 
 const App = () => (
@@ -16,10 +16,11 @@ const App = () => (
       </header>
       {/* <DiabetesChart/> */}
       <Switch>
-        {/* <Route exact path="/home" component={Home} /> */}
-        <Route path="/" exact />
+        
+        <Route path="/" exact component={Login} />
         <PrivateRoute exact path="/Main" component={Main} />
         <PrivateRoute exact path="/Search" component={Search} />
+        {/* <Route component={pageNotFound} /> */}
       </Switch>
 
     </Router>
