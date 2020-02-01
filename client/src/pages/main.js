@@ -3,7 +3,7 @@ import ProfileCard from "../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
 import InputForm from "../components/InputForm/InputForm";
 import API from "../utils/API";
-import { format, compareAsc } from "date-fns";
+import { format } from "date-fns";
 import { Row, Container, Col } from "reactstrap";
 // import AlertHelper from "../components/AlertHelper/AlertHelper";
 
@@ -73,45 +73,6 @@ class Main extends React.Component {
 
   generateData = (start, end, step) => {
     const data = this.state.chartData;
-    // const data = [{
-    //   "value": 85.12312,
-    //   "high" : 130,
-    //   "low" : 80,
-    //   "date": 10
-    // },
-    // {
-    //   "value": 100.43,
-    //   "high" : 130,
-    //   "low" : 80,
-    //   "date": 25
-    // },
-    // {
-    //   "value": 150.45433,
-    //   "high" : 130,
-    //   "low" : 80,
-    //   "date": 30
-    // },{
-    //   "value": 40.12312,
-    //   "high" : 130,
-    //   "low" : 80,
-    //   "date": 45
-    // },
-    // {
-    //   "value": 110.432232,
-    //   "date": 50.1
-    // },
-    // {
-    //   "value": 100.45433,
-    //   "high" : 130,
-    //   "low" : 80,
-    //   "date": 60
-    // },
-    // {
-    //   "value": 80.45433,
-    //   "high" : 130,
-    //   "low" : 80,
-    //   "date": 70
-    // }];
     // console.log("data", data);
 
     return data;
