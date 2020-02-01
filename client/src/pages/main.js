@@ -63,11 +63,11 @@ class Main extends React.Component {
           let realTime = setTime.join(":");
           let newObj = {
             "value": item.glucose,
-            "high": 130,
-            "low": 80,
+            "high": 160,
+            "low": 100,
             "date": realTime
           };
-          newArray.push(newObj);
+          newArray.unshift(newObj);
         }
         this.setState({ chartData: newArray });
       })
