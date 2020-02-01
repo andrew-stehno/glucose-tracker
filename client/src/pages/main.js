@@ -57,12 +57,15 @@ class Main extends React.Component {
         const newArray = [];
         for (let i = 0; i < resData.length; i++) {
           const item = resData[i];
+          let time = item.date.split(".", 1);
+          let newTime = time[0].split("T");
+          let setTime = newTime[1].split(":", 2);
+          let realTime = setTime.join(":");
           let newObj = {
             "value": item.glucose,
             "high": 130,
             "low": 80,
-            "date": [i],
-            "realDate": item.date
+            "date": realTime
           };
           newArray.push(newObj);
         }
