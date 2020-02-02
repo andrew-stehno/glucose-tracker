@@ -11,7 +11,7 @@ class Search extends Component {
   state = {
     startDate: new Date(),
     results: [],
-    chartData: []
+    chartData: [],
   };
 
   componentDidMount() {
@@ -22,6 +22,14 @@ class Search extends Component {
     this.setState({
       startDate: date
     });
+  };
+  
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state.update);
   };
 
   getFromDatabase = () => {

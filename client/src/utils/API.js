@@ -10,6 +10,14 @@ export default {
   saveData: function(data) {
     return axios.post("/api/glucose/", data);
   },
+  // Gets data by id
+  getOneRecord: function(id) {
+    return axios.get("/api/glucose/" + id);
+  },
+  // Updated record with given id
+  updateRecord: function(id, data) {
+    return axios.put("/api/glucose/" + id, data)
+  },
   // Deletes data with given id
   deleteRecord: function(id) {
     return axios.delete("/api/glucose/" + id);
