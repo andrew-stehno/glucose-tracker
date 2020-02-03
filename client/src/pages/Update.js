@@ -2,6 +2,7 @@ import ProfileCard from "../components/ProfileCard/ProfileCard";
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
+import { Link } from "react-router-dom";
 
 class Update extends Component {
   state = {
@@ -9,6 +10,10 @@ class Update extends Component {
   };
 
   componentDidMount() {
+    this.getRecord()
+  };
+
+  getRecord() {
     API.getOneRecord(this.props.match.params.id)
       .then(res => {
         this.setState({
@@ -49,6 +54,9 @@ class Update extends Component {
               <Button onClick={() => props.editRecord(info.id)}>Update</Button>
             </Form> */}
           </Col>
+        </Row>
+        <Row>
+          <Link to={"/Search"}>Back to Search Page.</Link>
         </Row>
       </Container>
     );

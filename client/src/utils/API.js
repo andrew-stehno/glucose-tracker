@@ -12,6 +12,7 @@ export default {
   },
   // Gets data by id
   getOneRecord: function(id) {
+    console.log(id)
     return axios.get("/api/glucose/" + id);
   },
   // Updated record with given id

@@ -18,10 +18,11 @@ function SearchResults(props) {
           {props.editData.map(info => (
             <ListGroupItem>
               <Link to={"/update/" + info.id}>
-                <strong>Date:</strong> {info.calender[0]},{" "}
+                Click here to update your value.
+              </Link>
+                {" "}<strong>Date:</strong> {info.calender[0]},{" "}
                 <strong>Time:</strong> {info.date}, <strong>Value:</strong>{" "}
                 {info.value}
-              </Link>
               <Button onClick={() => props.delete(info.id)}>Delete</Button>
             </ListGroupItem>
           ))}
