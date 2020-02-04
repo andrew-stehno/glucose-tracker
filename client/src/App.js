@@ -15,7 +15,6 @@ const App = () => (
       <header>
         <NavBar />
       </header>
-      {/* <DiabetesChart/> */}
       <Switch>
         
         <Route path="/" exact component={Login} />
