@@ -5,12 +5,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
 import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
+import SearchResults from "../components/SearchResults/SearchResults";
 
 class Search extends Component {
   state = {
     startDate: new Date(),
     results: [],
-    chartData: []
+    chartData: [],
   };
 
   componentDidMount() {
@@ -21,6 +22,14 @@ class Search extends Component {
     this.setState({
       startDate: date
     });
+  };
+  
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state.update);
   };
 
   getFromDatabase = () => {
@@ -35,14 +44,20 @@ class Search extends Component {
         const newArray = [];
         for (let i = 0; i < resData.length; i++) {
           const item = resData[i];
+          let date = item.date.split("T", 1);
+          let time = item.date.split(".", 1);
+          let newTime = time[0].split("T");
+          let setTime = newTime[1].split(":", 2);
+          let realTime = setTime.join(":");
           let newObj = {
+            "id": item._id,
             "value": item.glucose,
             "high": 130,
             "low": 80,
-            "date": [i],
-            "realDate": item.date
+            "date": realTime,
+            "calender": date
           };
-          newArray.push(newObj);
+          newArray.unshift(newObj);
         }
         this.setState({ chartData: newArray });
       })
@@ -54,6 +69,12 @@ class Search extends Component {
     // console.log("data", data);
 
     return data;
+  };
+
+  delete = (id) => {
+    API.deleteRecord(id)
+    .then(res => this.getFromDatabase())
+    .catch(err => console.log(err));
   };
 
   render() {
@@ -79,6 +100,14 @@ class Search extends Component {
                   generateData={this.generateData}
                 />
               </Form>
+            </Col>
+          </Row>
+          <Row>
+            <Col md="12">
+              <SearchResults 
+                editData={this.state.chartData}
+                delete={this.delete}
+              />
             </Col>
           </Row>
         </Container>

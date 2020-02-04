@@ -4,6 +4,9 @@ import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import Search from "./pages/Search/Search";
+import Main from "./pages/main";
+import Search from "./pages/Search";
+import Update from "./pages/Update";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from "./pages/Login/Login";
 
@@ -14,13 +17,12 @@ const App = () => (
       <header>
         <NavBar />
       </header>
-      {/* <DiabetesChart/> */}
       <Switch>
         
         <Route path="/" exact component={Login} />
         <PrivateRoute exact path="/Main" component={Main} />
         <PrivateRoute exact path="/Search" component={Search} />
-        {/* <Route component={pageNotFound} /> */}
+        <PrivateRoute exact path="/update/:id" component={Update} />
       </Switch>
 
     </Router>

@@ -8,7 +8,7 @@
     "@devexpress/dx-react-chart-bootstrap4": "^2.4.0",
     "@devexpress/dx-react-core": "^2.4.0",
     "date-fns": "^2.9.0",
-    "mathjs": "^6.6.0",
+    "devextreme-react": "^19.2.6",
     "react": "^16.6.3",
     "react-datepicker": "^2.11.0",
     "react-dom": "^16.6.3",
