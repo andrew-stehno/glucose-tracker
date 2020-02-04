@@ -30,17 +30,16 @@ const navBar = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {/* <NavItem> */}
             {isAuthenticated && (
-              <NavItem>
-                {isAuthenticated && (
-                  <NavItem>
-                  <NavLink href="/main">Main</NavLink>
-                  </NavItem>
-                )}
-              </NavItem>
+              <div>
+                <NavItem>
+                  <NavLink href="/Main">Main</NavLink>
+                </NavItem>
+              </div>
             )}
-            {/* </NavItem> */}
+            <NavItem>
+              <NavLink href="/Search">Search</NavLink>
+            </NavItem>
             <NavItem>
               <NavLink href="/">Home</NavLink>
             </NavItem>

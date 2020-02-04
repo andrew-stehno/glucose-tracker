@@ -7,26 +7,31 @@ const footer = (props) => {
       <Container fluid className="text-center text-md-left">
         <Row>
           <Col md="6">
-            <h5 className="title">Footer Content</h5>
+            <h5 className="title">Resources</h5>
             <p>
-              Here you can use rows and columns here to organize your footer
-              content.
+            No matter where you are in your fight, here’s where you need to be. Whether you’ve 
+            been newly diagnosed, have been fighting against type 1 or type 2 diabetes for a while, 
+            or are helping a loved one, you’ve come to the right place. This is the start of gaining a 
+            deeper understanding of how you can live a healthier life—with all the tools, 
+            health tips, and food ideas you need. Wherever you’re at with this disease, know 
+            that you have options and that you don’t have to be held back. You can still live your best life. 
+            All you have to do is take action and stick with it.
             </p>
           </Col>
           <Col md="6">
             <h5 className="title">Links</h5>
             <ul>
               <li className="list-unstyled">
-                <a href="#!">Link 1</a>
+                <a href="https://www.diabetes.org/">https://www.diabetes.org/</a>
               </li>
               <li className="list-unstyled">
-                <a href="#!">Link 2</a>
+                <a href="https://www.cdc.gov/diabetes/index.html">https://www.cdc.gov/diabetes/index.html</a>
               </li>
               <li className="list-unstyled">
-                <a href="#!">Link 3</a>
+                <a href="https://www.diabetesselfmanagement.com/">https://www.diabetesselfmanagement.com/</a>
               </li>
               <li className="list-unstyled">
-                <a href="#!">Link 4</a>
+                <a href="https://www.diabetesdaily.com/">https://www.diabetesdaily.com/</a>
               </li>
             </ul>
           </Col>

@@ -3,21 +3,24 @@ import history from "./utils/history";
 import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/main";
+import Search from "./pages/Search";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-// import Home from "../src/pages/Login/Home";
+import Login from "./pages/Login/Login";
 
 
 const App = () => (
   <div className="App">
     <Router history={history}>
       <header>
-        <NavBar/>
+        <NavBar />
       </header>
       {/* <DiabetesChart/> */}
       <Switch>
-        {/* <Route exact path="/home" component={Home} /> */}
-        <Route path="/" exact />
-        <PrivateRoute exact path="/main" component={Main} />
+        
+        <Route path="/" exact component={Login} />
+        <PrivateRoute exact path="/Main" component={Main} />
+        <PrivateRoute exact path="/Search" component={Search} />
+        {/* <Route component={pageNotFound} /> */}
       </Switch>
 
     </Router>
@@ -25,3 +28,7 @@ const App = () => (
 )
 
 export default App;
+
+
+
+
