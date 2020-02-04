@@ -5,7 +5,7 @@ import InputForm from "../components/InputForm/InputForm";
 import API from "../utils/API";
 import { format } from "date-fns";
 import { Row, Container, Col } from "reactstrap";
-import AlertHelper from "../components/AlertHelper/AlertHelper";
+import AlertHelper from "../components/AlertHelper/AlertHelper.js";
 
 
 class Main extends React.Component {
@@ -51,6 +51,10 @@ class Main extends React.Component {
           this.toggleModal()
         }) 
       .catch(err => console.log(err));
+  };
+
+  updateChart = () => {
+    
   };
 
   getFromDatabase = () => {
