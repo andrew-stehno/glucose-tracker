@@ -15,9 +15,9 @@ export default {
     return axios.get("/api/glucose/" + id);
   },
   // Updated record with given id
-  updateRecord: function(data) {
-    console.log(data)
-    // return axios.put("/api/glucose/" + data.id)
+  updateRecord: function(id, data) {
+    console.log(id, data)
+    return axios.put("/api/glucose/" + id, data)
   },
   // Deletes data with given id
   deleteRecord: function(id) {
