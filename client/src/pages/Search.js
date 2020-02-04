@@ -1,60 +1,34 @@
-import React from "react";
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
-import InputForm from "../components/InputForm/InputForm";
+import React, { Component } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import API from "../utils/API";
-import { format } from "date-fns";
-import { Row, Container, Col } from "reactstrap";
-// import AlertHelper from "../components/AlertHelper/AlertHelper";
+import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
 
-class Main extends React.Component {
+class Search extends Component {
   state = {
-    today: new Date(),
-    glucoseLevel: "",
+    startDate: new Date(),
     results: [],
     chartData: []
   };
 
   componentDidMount() {
-    this.setDate();
     this.getFromDatabase();
   }
 
-  setDate = () => {
-    const todaysDate = format(new Date(), "MM/dd/yyyy");
-    document.getElementById("dateStamp").innerHTML = todaysDate;
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
+  handleChange = date => {
     this.setState({
-      [name]: value
+      startDate: date
     });
   };
 
-  saveToDatabase = () => {
-    API.saveData({
-      date: this.state.today,
-      glucose: this.state.glucoseLevel
-    })
-      .then(res => {
-        this.getFromDatabase();
-      })
-      .catch(err => console.log(err));
-  };
-
-  updateChart = () => {
-    
-  };
-
   getFromDatabase = () => {
-    let date = this.state.today;
+    let date = this.state.startDate;
     API.getByDay(date)
       .then(res => {
         this.setState({
-          results: res.data,
-          today: new Date(),
-          glucoseLevel: ""
+          results: res.data
         });
         // Massage raw data into useable data:
         const resData = this.state.results;
@@ -94,17 +68,20 @@ class Main extends React.Component {
               <ProfileCard />
             </Col>
             <Col md="9">
-              <h4 id="dateStamp"></h4>
-              <InputForm
-                saveToDatabase={this.saveToDatabase}
-                value={this.state.glucoseLevel}
-                onChange={this.handleInputChange}
-              />
-              <DiabetesChart
-                results={this.state.results}
-                generateData={this.generateData}
-              />
-              {/* <AlertHelper /> */}
+              <Form>
+                <h4>Date</h4>
+                <FormGroup>
+                  <DatePicker
+                    selected={this.state.startDate}
+                    onChange={this.handleChange}
+                  />
+                </FormGroup>
+                <Button onClick={() => this.getFromDatabase()}>Search</Button>
+                <DiabetesChart
+                  results={this.state.results}
+                  generateData={this.generateData}
+                />
+              </Form>
             </Col>
           </Row>
         </Container>
@@ -113,4 +90,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default Search;
