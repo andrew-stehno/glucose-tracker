@@ -42,39 +42,38 @@ class Update extends Component {
         let time = this.state.records.date.split(".", 1);
         let newTime = time[0].split("T");
         this.setState({ date: date, time: newTime[1] });
-        console.log(this.state.records);
       })
       .catch(err => console.log(err));
   }
 
   editRecord = id => {
-    console.log(id, this.state.updatedGlucose);
     const newData = {
       date: this.state.records.date,
       glucose: this.state.updatedGlucose
     };
+    console.log(id)
     console.log(newData);
-    API.updateRecord({
+    API.updateRecord(
       id,
       newData
-    })
+    )
       .then(res => {
-        // this.getFromDatabase(id);
-        console.log("did it work?")
+        this.setState({updatedGlucose: ""})
+        this.getFromDatabase(id);
       })
       .catch(err => console.log(err));
   };
 
-  // getFromDatabase = id => {
-  //   API.getOneRecord(id)
-  //     .then(res => {
-  //       this.setState({
-  //         records: res.data
-  //       });
-  //       console.log(this.state.records)
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  getFromDatabase = id => {
+    API.getOneRecord(id)
+      .then(res => {
+        this.setState({
+          records: res.data
+        });
+        console.log(this.state.records)
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -94,6 +93,7 @@ class Update extends Component {
                   name="updatedGlucose"
                   value={this.state.updatedGlucose}
                   onChange={this.handleInputChange}
+                  placeholder={"Updated glucose value"}
                 />
                 <Button onClick={() => this.editRecord(this.state.records._id)}>
                   Update
