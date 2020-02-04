@@ -3,9 +3,7 @@ import {
   Container,
   ListGroup,
   ListGroupItem,
-  Input,
-  Button,
-  Form
+  Button
 } from "reactstrap";
 import "./style.css";
 import { Link } from "react-router-dom";
