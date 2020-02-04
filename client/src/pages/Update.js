@@ -1,16 +1,35 @@
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
+import {
+  Row,
+  Container,
+  Col,
+  Button,
+  Form,
+  FormGroup,
+  Input
+} from "reactstrap";
 import { Link } from "react-router-dom";
 
 class Update extends Component {
   state = {
-    records: {}
+    updatedGlucose: "",
+    records: {},
+    date: "",
+    time: ""
   };
 
   componentDidMount() {
-    this.getRecord()
+    this.getRecord();
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+    console.log(this.state.updatedGlucose)
   };
 
   getRecord() {
@@ -19,20 +38,30 @@ class Update extends Component {
         this.setState({
           records: res.data
         });
-        console.log(this.state.records);
+        let date = this.state.records.date.split("T", 1);
+        let time = this.state.records.date.split(".", 1);
+        let newTime = time[0].split("T");
+        this.setState({ date: date, time: newTime[1] });
+        console.log(this.state.records)
       })
       .catch(err => console.log(err));
   }
 
   editRecord = id => {
-    API.updateRecord({
-      id,
-      glucose: this.state.update
-    })
-      .then(res => {
-        this.getFromDatabase();
-      })
-      .catch(err => console.log(err));
+    const newData = {
+      // id: this.state.records._id,
+      date: this.state.records.date,
+      glucose: this.state.updatedGlucose
+    }
+    console.log(newData)
+    // API.updateRecord({
+    //   id,
+    //   newData
+    // })
+    //   .then(res => {
+    //     this.getFromDatabase();
+    //   })
+    //   .catch(err => console.log(err));
   };
 
   render() {
@@ -43,16 +72,24 @@ class Update extends Component {
             <ProfileCard />
           </Col>
           <Col md="9">
-            {/* <Form>
-              <Input
-                id="update"
-                type="text"
-                name="update"
-                placeholder="Enter updated glucose value here."
-                {...props}
-              />
-              <Button onClick={() => props.editRecord(info.id)}>Update</Button>
-            </Form> */}
+            <strong>Date:</strong> {this.state.date}, <strong>Time:</strong>{" "}
+            {this.state.time}, <strong>Value:</strong>{" "}
+            {this.state.records.glucose}
+            <p>Enter an updated value below:</p>
+            <Form>
+              <FormGroup>
+                <Input 
+                name="updatedGlucose"
+                value={this.state.updatedGlucose}
+                onChange={this.handleInputChange}
+                />
+                <Button
+                  onClick={() => this.editRecord(this.state.records.id)}
+                >
+                  Update
+                </Button>
+              </FormGroup>
+            </Form>
           </Col>
         </Row>
         <Row>

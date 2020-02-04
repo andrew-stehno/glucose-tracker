@@ -8,7 +8,7 @@ router
   .post(glucoseController.create);
 
 // Matches with "/api/glucose/:date"
-router.route("/:date").get(glucoseController.find);
+router.route("/date/:date").get(glucoseController.find);
 
 // Matches with "/api/glucose/:id"
 router
