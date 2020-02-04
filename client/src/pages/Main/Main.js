@@ -1,11 +1,12 @@
 import React from "react";
-import ProfileCard from "../components/ProfileCard/ProfileCard";
-import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
-import InputForm from "../components/InputForm/InputForm";
-import API from "../utils/API";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
+import InputForm from "../../components/InputForm/InputForm";
+import API from "../../utils/API";
 import { format } from "date-fns";
 import { Row, Container, Col } from "reactstrap";
-import AlertHelper from "../components/AlertHelper/AlertHelper";
+import AlertHelper from "../../components/AlertHelper/AlertHelper";
+//import { create, all } from "mathjs";
 
 
 class Main extends React.Component {
@@ -35,9 +36,10 @@ class Main extends React.Component {
   };
 
   toggleModal = () => {
-    this.setState({isModalOpen: !this.state.isModalOpen}) 
-    
+    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
+
+
 
   saveToDatabase = () => {
     API.saveData({
@@ -47,11 +49,15 @@ class Main extends React.Component {
       .then(res => {
         this.getFromDatabase();
       })
-        .then(() => {
-          this.toggleModal()
-        }) 
+      .then(() => {
+        this.toggleModal()
+      })
       .catch(err => console.log(err));
   };
+
+
+
+
 
   getFromDatabase = () => {
     let date = this.state.today;
@@ -90,34 +96,38 @@ class Main extends React.Component {
 
   render() {
     return (
-      
-        <Container>
-          <Row>
-            <Col md="3">
-              <ProfileCard />
-            </Col>
-            <Col md="9">
-              <h4 id="dateStamp"></h4>
-              <InputForm
-                saveToDatabase={this.saveToDatabase}
-                value={this.state.glucoseLevel}
-                onChange={this.handleInputChange}
-              />
-              
-              <DiabetesChart
-                results={this.state.results}
-                generateData={this.generateData}
-              />
-              
-            </Col>
-          </Row>
-          <AlertHelper
+
+      <Container>
+        <Row>
+          <Col md="3">
+            <ProfileCard />
+          </Col>
+          <Col md="9">
+            <h4 id="dateStamp"></h4>
+            <InputForm
+              saveToDatabase={this.saveToDatabase}
+              value={this.state.glucoseLevel}
+              onChange={this.handleInputChange}
+            />
+
+            <DiabetesChart
+              results={this.state.results}
+              generateData={this.generateData}
+            />
+
+          </Col>
+        </Row>
+
+        <AlertHelper
           isOpen={this.state.isModalOpen}
-          toggle={this.toggleModal} />
-        </Container>
-      
-    );
+          toggle={this.toggleModal}
+          bsLevel={this.state.glucoseLevel}
+        />
+      </Container>
+
+    )
+
   }
-}
+};
 
 export default Main;

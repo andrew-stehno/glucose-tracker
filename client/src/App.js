@@ -2,8 +2,8 @@ import React from "react";
 import history from "./utils/history";
 import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
-import Main from "./pages/Main";
-import Search from "./pages/Search";
+import Main from "./pages/Main/Main";
+import Search from "./pages/Search/Search";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from "./pages/Login/Login";
 

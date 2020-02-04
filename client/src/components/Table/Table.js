@@ -20,7 +20,7 @@ const table = (props) => {
       <thead>
         <tr>
           <th>Date</th>
-          <th>First Name</th>
+          <th>Glucose Levels</th>
           <th>Last Name</th>
           <th>Username</th>
         </tr>
