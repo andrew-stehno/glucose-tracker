@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD:client/src/pages/main.js
 import ProfileCard from "../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
 import InputForm from "../components/InputForm/InputForm";
@@ -9,6 +10,17 @@ import AlertHelper from "../components/AlertHelper/AlertHelper";
 import Moment from "react-moment";
 import "moment-timezone";
 import moment from "moment-timezone";
+=======
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
+import InputForm from "../../components/InputForm/InputForm";
+import API from "../../utils/API";
+import { format } from "date-fns";
+import { Row, Container, Col } from "reactstrap";
+import AlertHelper from "../../components/AlertHelper/AlertHelper";
+//import { create, all } from "mathjs";
+
+>>>>>>> development:client/src/pages/Main/Main.js
 
 class Main extends React.Component {
   state = {
@@ -42,8 +54,15 @@ class Main extends React.Component {
   };
 
   toggleModal = () => {
+<<<<<<< HEAD:client/src/pages/main.js
     this.setState({ isModalOpen: !this.state.isModalOpen });
   };
+=======
+    this.setState({ isModalOpen: !this.state.isModalOpen })
+  }
+>>>>>>> development:client/src/pages/Main/Main.js
+
+
 
   saveToDatabase = () => {
     API.saveData({
@@ -54,7 +73,11 @@ class Main extends React.Component {
         this.getFromDatabase();
       })
       .then(() => {
+<<<<<<< HEAD:client/src/pages/main.js
         this.toggleModal();
+=======
+        this.toggleModal()
+>>>>>>> development:client/src/pages/Main/Main.js
       })
       .catch(err => console.log(err));
   };
@@ -102,14 +125,22 @@ class Main extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD:client/src/pages/main.js
+=======
+
+>>>>>>> development:client/src/pages/Main/Main.js
       <Container>
         <Row>
           <Col md="3">
             <ProfileCard />
           </Col>
           <Col md="9">
+<<<<<<< HEAD:client/src/pages/main.js
             {/* <h4 id="dateStamp"></h4> */}
             <Moment local>{this.state.today}</Moment>
+=======
+            <h4 id="dateStamp"></h4>
+>>>>>>> development:client/src/pages/Main/Main.js
             <InputForm
               saveToDatabase={this.saveToDatabase}
               value={this.state.glucoseLevel}
@@ -120,6 +151,7 @@ class Main extends React.Component {
               results={this.state.results}
               generateData={this.generateData}
             />
+<<<<<<< HEAD:client/src/pages/main.js
           </Col>
         </Row>
         <AlertHelper
@@ -128,7 +160,22 @@ class Main extends React.Component {
         />
       </Container>
     );
+=======
+
+          </Col>
+        </Row>
+
+        <AlertHelper
+          isOpen={this.state.isModalOpen}
+          toggle={this.toggleModal}
+          bsLevel={this.state.glucoseLevel}
+        />
+      </Container>
+
+    )
+
+>>>>>>> development:client/src/pages/Main/Main.js
   }
-}
+};
 
 export default Main;
