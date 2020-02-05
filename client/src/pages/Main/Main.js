@@ -1,30 +1,17 @@
 import React from "react";
-import ProfileCard from "../components/ProfileCard/ProfileCard";
-import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
-import InputForm from "../components/InputForm/InputForm";
-import API from "../utils/API";
-// import { format } from "date-fns";
-import { Row, Container, Col } from "reactstrap";
-import AlertHelper from "../components/AlertHelper/AlertHelper";
-import Moment from "react-moment";
-import "moment-timezone";
-import moment from "moment-timezone";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
 import InputForm from "../../components/InputForm/InputForm";
-import API from "../../utils/API";
-import { format } from "date-fns";
-import { Row, Container, Col } from "reactstrap";
 import AlertHelper from "../../components/AlertHelper/AlertHelper";
-//import { create, all } from "mathjs";
-
+import API from "../../utils/API";
+import { Row, Container, Col } from "reactstrap";
+import Moment from "react-moment";
+import "moment-timezone";
+import moment from "moment-timezone";
 
 class Main extends React.Component {
   state = {
-    // today: new Date(),
     today: moment().format(),
-    // today: moment.utc().tz('America/Denver').format(),
-    // displayDate: "",
     glucoseLevel: "",
     results: [],
     chartData: [],
@@ -32,16 +19,8 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    this.setDate();
     this.getFromDatabase();
   }
-
-  setDate = () => {
-   
-    console.log(this.state.today)
-    // const todaysDate = format(new Date(), "MM/dd/yyyy");
-    // document.getElementById("dateStamp").innerHTML = todaysDate;
-  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -53,9 +32,7 @@ class Main extends React.Component {
   toggleModal = () => {
     this.setState({ isModalOpen: !this.state.isModalOpen })
   }
-
-
-
+  
   saveToDatabase = () => {
     API.saveData({
       date: this.state.today,
@@ -69,8 +46,6 @@ class Main extends React.Component {
       })
       .catch(err => console.log(err));
   };
-
-  updateChart = () => {};
 
   getFromDatabase = () => {
     let date = this.state.today;
@@ -119,7 +94,6 @@ class Main extends React.Component {
             <ProfileCard />
           </Col>
           <Col md="9">
-            {/* <h4 id="dateStamp"></h4> */}
             <Moment local>{this.state.today}</Moment>
             <InputForm
               saveToDatabase={this.saveToDatabase}
@@ -131,20 +105,16 @@ class Main extends React.Component {
               results={this.state.results}
               generateData={this.generateData}
             />
-
           </Col>
         </Row>
-
         <AlertHelper
           isOpen={this.state.isModalOpen}
           toggle={this.toggleModal}
           bsLevel={this.state.glucoseLevel}
         />
       </Container>
-
-    )
-
-  }
+    );
+    }
 };
 
 export default Main;

@@ -7,7 +7,6 @@
     "@devexpress/dx-react-chart": "^2.4.0",
     "@devexpress/dx-react-chart-bootstrap4": "^2.4.0",
     "@devexpress/dx-react-core": "^2.4.0",
-    "date-fns": "^2.9.0",
     "devextreme-react": "^19.2.6",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.27",
