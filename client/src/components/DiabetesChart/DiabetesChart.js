@@ -25,7 +25,7 @@ export default class DiabetesChart extends React.Component {
   
   render() {
     const data = this.props.generateData(50, 200, 1);
-    console.log("data", data);
+    // console.log("data", data);
     const splinePoint = { size: 10 };
     
     return (
