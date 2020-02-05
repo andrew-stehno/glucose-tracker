@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
 import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
-import SearchResults from "../components/SearchResults/SearchResults";
+import SearchResults from "../../components/SearchResults/SearchResults";
 
 class Search extends Component {
   state = {
