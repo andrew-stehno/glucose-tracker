@@ -39,6 +39,7 @@ class Main extends React.Component {
       glucose: this.state.glucoseLevel
     })
       .then(res => {
+        console.log(res)
         this.getFromDatabase();
       })
       .then(() => {
@@ -107,11 +108,14 @@ class Main extends React.Component {
             />
           </Col>
         </Row>
-        <AlertHelper
-          isOpen={this.state.isModalOpen}
-          toggle={this.toggleModal}
-          bsLevel={this.state.glucoseLevel}
-        />
+        {this.state.isModalOpen && (
+          <AlertHelper
+            isOpen={this.state.isModalOpen}
+            toggle={this.toggleModal}
+            bsLevel={this.state.glucoseLevel}
+          />
+        )}
+
       </Container>
     );
     }
