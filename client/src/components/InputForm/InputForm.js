@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 import {
   Button,
   Form,
@@ -9,19 +10,19 @@ import {
 
 function InputForm(props) {
   return (
-    <Form>
-      <FormGroup>
-        <Label for="glucose reading">
+    <Form ib="form">
+      <FormGroup id="formGroup">
+        <Label id="label" for="glucose reading">
           <h4>Glucose Levels</h4>
         </Label>
-        <Input
+        <Input id="input"
           type="text"
           name="glucoseLevel"
           placeholder="mg/dl"
           {...props}
         />
       </FormGroup>
-      <Button onClick={props.saveToDatabase}>Submit</Button>
+      <Button id="button" onClick={props.saveToDatabase}>Submit</Button>
     </Form>
   );
 }
