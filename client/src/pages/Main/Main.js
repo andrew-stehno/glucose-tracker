@@ -47,6 +47,7 @@ class Main extends React.Component {
       glucose: this.state.glucoseLevel
     })
       .then(res => {
+        console.log(res)
         this.getFromDatabase();
       })
       .then(() => {
@@ -56,7 +57,7 @@ class Main extends React.Component {
   };
 
   updateChart = () => {
-    
+
   };
 
   getFromDatabase = () => {
@@ -106,7 +107,7 @@ class Main extends React.Component {
             <ProfileCard />
           </Col>
           <Col md="9">
-            <h4 id="dateStamp"></h4>
+            <h4 id="dateStamp">Date</h4>
             <InputForm
               saveToDatabase={this.saveToDatabase}
               value={this.state.glucoseLevel}
@@ -120,12 +121,14 @@ class Main extends React.Component {
 
           </Col>
         </Row>
+        {this.state.isModalOpen && (
+          <AlertHelper
+            isOpen={this.state.isModalOpen}
+            toggle={this.toggleModal}
+            bsLevel={this.state.glucoseLevel}
+          />
+        )}
 
-        <AlertHelper
-          isOpen={this.state.isModalOpen}
-          toggle={this.toggleModal}
-          bsLevel={this.state.glucoseLevel}
-        />
       </Container>
 
     )
