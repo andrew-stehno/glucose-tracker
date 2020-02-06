@@ -11,7 +11,7 @@ class Search extends Component {
   state = {
     startDate: new Date(),
     results: [],
-    chartData: [],
+    chartData: []
   };
 
   componentDidMount() {
@@ -23,7 +23,7 @@ class Search extends Component {
       startDate: date
     });
   };
-  
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -50,12 +50,12 @@ class Search extends Component {
           let setTime = newTime[1].split(":", 2);
           let realTime = setTime.join(":");
           let newObj = {
-            "id": item._id,
-            "value": item.glucose,
-            "high": 130,
-            "low": 80,
-            "date": realTime,
-            "calender": date
+            id: item._id,
+            value: item.glucose,
+            high: 160,
+            low: 100,
+            date: realTime,
+            calender: date
           };
           newArray.unshift(newObj);
         }
@@ -71,10 +71,10 @@ class Search extends Component {
     return data;
   };
 
-  delete = (id) => {
+  delete = id => {
     API.deleteRecord(id)
-    .then(res => this.getFromDatabase())
-    .catch(err => console.log(err));
+      .then(res => this.getFromDatabase())
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -104,7 +104,7 @@ class Search extends Component {
           </Row>
           <Row>
             <Col md="12">
-              <SearchResults 
+              <SearchResults
                 editData={this.state.chartData}
                 delete={this.delete}
               />
