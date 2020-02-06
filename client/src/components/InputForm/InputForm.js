@@ -10,7 +10,7 @@ import {
 
 function InputForm(props) {
   return (
-    <Form ib="form">
+    <Form id="form">
       <FormGroup id="formGroup">
         <Label id="label" for="glucose reading">
           <h4>Glucose Levels</h4>
