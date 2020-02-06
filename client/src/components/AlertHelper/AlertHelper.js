@@ -2,6 +2,8 @@ import React from 'react';
 import "./style.css"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
+
+
 function AlertHelper(props) {
 
   const less100 = "Less than 100 mg/dL: Consider eating a small snack with about 15 grams of carbs to keep your blood sugar from getting too low. Examples include a half cup of fruit juice, a small piece of fruit, or four crackers. Glucose tabs are also a good choice."
