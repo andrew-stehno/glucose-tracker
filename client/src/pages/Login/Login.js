@@ -1,6 +1,9 @@
 import React from "react";
 import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer";
+import ArticleCarousel from "../../components/ArticleCarousel/ArticleCarousel"
+import Navbar from "../../components/NavBar/NavBar";
+import Hero from "../../components/Hero/Hero"
 
 
 
@@ -9,7 +12,10 @@ import Footer from "../../components/Footer/Footer";
 const Login = () => {
     return (
         <div>
-        <Jumbotron />,
+        <Hero />
+        {/* <Jumbotron />, */}
+        <Navbar />,
+        <ArticleCarousel />, 
         <Footer />
         </div>
     )

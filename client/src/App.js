@@ -12,9 +12,9 @@ import Login from "./pages/Login/Login";
 const App = () => (
   <div className="App">
     <Router history={history}>
-      <header>
+      {/* <header>
         <NavBar />
-      </header>
+      </header> */}
       <Switch>
         
         <Route path="/" exact component={Login} />

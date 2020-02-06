@@ -1,0 +1,14 @@
+.heroImg {
+    background-image: url("https://pixabay.com/photos/diabetes-diabetics-disease-2298058/");
+    color: brown;
+    background-color: blue;
+}
+
+.text {
+    color: crimson;
+}
+
+.sliderImg {
+    width:  1500px;
+    height: 500px;
+}
