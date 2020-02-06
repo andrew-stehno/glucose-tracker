@@ -7,6 +7,7 @@ import {
   CarouselCaption, 
   Container
 } from 'reactstrap';
+import { Link } from "react-router-dom";
 
 const items = [
   {
@@ -56,9 +57,9 @@ const ArticleCarousel = (props) => {
         onExited={() => setAnimating(false)}
         key={item.src}
       >
-        <img className="sliderImg" src={item.src} alt={item.altText} />
-        <a captionText={item.link}>Bruv</a>
-        <CarouselCaption captionHeader={item.caption} />
+        <img className="sliderImg" src={item.src} alt={item.altText} Link to={item.link}  />
+        
+        <CarouselCaption captionHeader={item.caption}  captionText={item.altText} />
       </CarouselItem>
     );
   });

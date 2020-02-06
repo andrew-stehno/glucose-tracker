@@ -31,16 +31,17 @@ const navBar = props => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             {isAuthenticated && (
-              <div>
-                <NavItem>
-                  <NavLink href="/Main">Your Sugar Pin</NavLink>
-                </NavItem>
-              </div>  
               
+                <ul className="nav justify-content-end">
+                  <li>
+                  <NavLink href="/Main">Your Sugar Pin</NavLink>
+                  </li>
+                  <li>
+                  <NavLink href="/Search">Search</NavLink>
+                  </li>
+                </ul>
+    
             )}
-            <NavItem>
-                <NavLink href="/Search">Search</NavLink>
-            </NavItem>
 
             <NavItem>
               <NavLink href="/">Home</NavLink>

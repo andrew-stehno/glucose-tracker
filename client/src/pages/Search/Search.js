@@ -82,24 +82,28 @@ class Search extends Component {
       <div>
         <Container>
           <Row>
-            <Col md="3">
+            <Col md="3" sm="6">
               <ProfileCard />
-            </Col>
-            <Col md="9">
               <Form>
                 <h4>Date</h4>
-                <FormGroup>
+                <FormGroup className="fuckery">
                   <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
+                    // withPortal
                   />
                 </FormGroup>
                 <Button onClick={() => this.getFromDatabase()}>Search</Button>
+                </Form>
+            </Col>
+            <Col md="9" sm="12">
+            
                 <DiabetesChart
+                  className="duhbetis"
                   results={this.state.results}
                   generateData={this.generateData}
                 />
-              </Form>
+              
             </Col>
           </Row>
           <Row>

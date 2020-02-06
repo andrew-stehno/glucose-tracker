@@ -12,9 +12,8 @@ import Hero from "../../components/Hero/Hero"
 const Login = () => {
     return (
         <div>
-        <Hero />
+        {/* <Hero /> */}
         {/* <Jumbotron />, */}
-        <Navbar />,
         <ArticleCarousel />, 
         <Footer />
         </div>

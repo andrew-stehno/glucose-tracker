@@ -8,6 +8,7 @@ import { Row, Container, Col } from "reactstrap";
 import Moment from "react-moment";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./main.css";
 
 class Main extends React.Component {
   state = {
@@ -96,6 +97,7 @@ class Main extends React.Component {
           <Col md="9">
             <Moment local>{this.state.today}</Moment>
             <InputForm
+              className="formBar"
               saveToDatabase={this.saveToDatabase}
               value={this.state.glucoseLevel}
               onChange={this.handleInputChange}
