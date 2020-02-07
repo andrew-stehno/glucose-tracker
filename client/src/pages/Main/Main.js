@@ -1,16 +1,17 @@
 import React from "react";
-import ProfileCard from "../components/ProfileCard/ProfileCard";
-import DiabetesChart from "../components/DiabetesChart/DiabetesChart";
-import InputForm from "../components/InputForm/InputForm";
-import API from "../utils/API";
-import { format } from "date-fns";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
+import InputForm from "../../components/InputForm/InputForm";
+import AlertHelper from "../../components/AlertHelper/AlertHelper";
+import API from "../../utils/API";
 import { Row, Container, Col } from "reactstrap";
-import AlertHelper from "../components/AlertHelper/AlertHelper.js";
-
+import Moment from "react-moment";
+import "moment-timezone";
+import moment from "moment-timezone";
 
 class Main extends React.Component {
   state = {
-    today: new Date(),
+    today: moment().format(),
     glucoseLevel: "",
     results: [],
     chartData: [],
@@ -18,14 +19,8 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    this.setDate();
     this.getFromDatabase();
   }
-
-  setDate = () => {
-    const todaysDate = format(new Date(), "MM/dd/yyyy");
-    document.getElementById("dateStamp").innerHTML = todaysDate;
-  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -35,26 +30,22 @@ class Main extends React.Component {
   };
 
   toggleModal = () => {
-    this.setState({isModalOpen: !this.state.isModalOpen}) 
-    
+    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
-
+  
   saveToDatabase = () => {
     API.saveData({
       date: this.state.today,
       glucose: this.state.glucoseLevel
     })
       .then(res => {
+        console.log(res)
         this.getFromDatabase();
       })
-        .then(() => {
-          this.toggleModal()
-        }) 
+      .then(() => {
+        this.toggleModal()
+      })
       .catch(err => console.log(err));
-  };
-
-  updateChart = () => {
-    
   };
 
   getFromDatabase = () => {
@@ -71,15 +62,16 @@ class Main extends React.Component {
         const newArray = [];
         for (let i = 0; i < resData.length; i++) {
           const item = resData[i];
-          let time = item.date.split(".", 1);
+          const testTime = moment.utc(item.date).tz('America/Denver').format();
+          let time = testTime.split(".", 1);
           let newTime = time[0].split("T");
           let setTime = newTime[1].split(":", 2);
           let realTime = setTime.join(":");
           let newObj = {
-            "value": item.glucose,
-            "high": 160,
-            "low": 100,
-            "date": realTime
+            value: item.glucose,
+            high: 160,
+            low: 100,
+            date: realTime
           };
           newArray.unshift(newObj);
         }
@@ -97,34 +89,36 @@ class Main extends React.Component {
 
   render() {
     return (
-      
-        <Container>
-          <Row>
-            <Col md="3">
-              <ProfileCard />
-            </Col>
-            <Col md="9">
-              <h4 id="dateStamp"></h4>
-              <InputForm
-                saveToDatabase={this.saveToDatabase}
-                value={this.state.glucoseLevel}
-                onChange={this.handleInputChange}
-              />
-              
-              <DiabetesChart
-                results={this.state.results}
-                generateData={this.generateData}
-              />
-              
-            </Col>
-          </Row>
+      <Container>
+        <Row>
+          <Col md="3">
+            <ProfileCard />
+          </Col>
+          <Col md="9">
+            <Moment local>{this.state.today}</Moment>
+            <InputForm
+              saveToDatabase={this.saveToDatabase}
+              value={this.state.glucoseLevel}
+              onChange={this.handleInputChange}
+            />
+
+            <DiabetesChart
+              results={this.state.results}
+              generateData={this.generateData}
+            />
+          </Col>
+        </Row>
+        {this.state.isModalOpen && (
           <AlertHelper
-          isOpen={this.state.isModalOpen}
-          toggle={this.toggleModal} />
-        </Container>
-      
+            isOpen={this.state.isModalOpen}
+            toggle={this.toggleModal}
+            bsLevel={this.state.glucoseLevel}
+          />
+        )}
+
+      </Container>
     );
-  }
-}
+    }
+};
 
 export default Main;

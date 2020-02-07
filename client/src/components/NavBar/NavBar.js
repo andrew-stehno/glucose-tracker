@@ -33,17 +33,19 @@ const navBar = props => {
             {isAuthenticated && (
               <div>
                 <NavItem>
-                  <NavLink href="/Main">Main</NavLink>
+                  <NavLink href="/Main">Your Sugar Pin</NavLink>
                 </NavItem>
-                <NavItem>
-                  <NavLink href="/Search">Search</NavLink>
-                </NavItem>
-              </div>
+              </div>  
+              
             )}
+            <NavItem>
+                <NavLink href="/Search">Search</NavLink>
+            </NavItem>
+
             <NavItem>
               <NavLink href="/">Home</NavLink>
             </NavItem>
-
+              
             <NavItem>
               {!isAuthenticated && (
                 <button onClick={() => loginWithRedirect({})}>Log in</button>
@@ -61,5 +63,7 @@ const navBar = props => {
     </div>
   );
 };
+
+            
 
 export default navBar;

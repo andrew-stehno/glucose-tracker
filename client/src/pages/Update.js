@@ -22,14 +22,14 @@ class Update extends Component {
 
   componentDidMount() {
     this.getRecord();
-  };
+  }
 
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
-    console.log(this.state.updatedGlucose)
+    console.log(this.state.updatedGlucose);
   };
 
   getRecord() {
@@ -42,26 +42,37 @@ class Update extends Component {
         let time = this.state.records.date.split(".", 1);
         let newTime = time[0].split("T");
         this.setState({ date: date, time: newTime[1] });
-        console.log(this.state.records)
       })
       .catch(err => console.log(err));
   }
 
   editRecord = id => {
     const newData = {
-      // id: this.state.records._id,
       date: this.state.records.date,
       glucose: this.state.updatedGlucose
-    }
-    console.log(newData)
-    // API.updateRecord({
-    //   id,
-    //   newData
-    // })
-    //   .then(res => {
-    //     this.getFromDatabase();
-    //   })
-    //   .catch(err => console.log(err));
+    };
+    console.log(id)
+    console.log(newData);
+    API.updateRecord(
+      id,
+      newData
+    )
+      .then(res => {
+        this.setState({updatedGlucose: ""})
+        this.getFromDatabase(id);
+      })
+      .catch(err => console.log(err));
+  };
+
+  getFromDatabase = id => {
+    API.getOneRecord(id)
+      .then(res => {
+        this.setState({
+          records: res.data
+        });
+        console.log(this.state.records)
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -78,14 +89,13 @@ class Update extends Component {
             <p>Enter an updated value below:</p>
             <Form>
               <FormGroup>
-                <Input 
-                name="updatedGlucose"
-                value={this.state.updatedGlucose}
-                onChange={this.handleInputChange}
+                <Input
+                  name="updatedGlucose"
+                  value={this.state.updatedGlucose}
+                  onChange={this.handleInputChange}
+                  placeholder={"Updated glucose value"}
                 />
-                <Button
-                  onClick={() => this.editRecord(this.state.records.id)}
-                >
+                <Button onClick={() => this.editRecord(this.state.records._id)}>
                   Update
                 </Button>
               </FormGroup>
