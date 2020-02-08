@@ -25,7 +25,7 @@ const navBar = props => {
 
   return (
     <div>
-      <Navbar className="navBar" color="blue" light expand="md">
+      <Navbar className="navBar mb-5" color="blue" light expand="md">
         <NavbarBrand>Sugar Pin</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
@@ -49,13 +49,13 @@ const navBar = props => {
               
             <NavItem>
               {!isAuthenticated && (
-                <button onClick={() => loginWithRedirect({})}>Log in</button>
+                <button className="btn" onClick={() => loginWithRedirect({})}>Log in</button>
               )}
             </NavItem>
 
             <NavItem>
               {isAuthenticated && (
-                <button onClick={() => logout()}>Log out</button>
+                <button className="btn" onClick={() => logout()}>Log out</button>
               )}
             </NavItem>
           </Nav>
