@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
 
-const footer = (props) => {
+const footer = () => {
   return (
     <div color="blue" className="font-small pt-4 mt-4">
       <Container fluid className="text-center text-md-left">
