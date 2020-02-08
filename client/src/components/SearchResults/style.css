@@ -1,3 +1,16 @@
 #update {
     width: 275px;
 }
+
+strong {
+    padding:10px;
+}
+
+.btn {
+    float:right;
+    background-color: #49c6e5;
+}
+
+.list-group-item, .list-group {
+    border:0;
+}

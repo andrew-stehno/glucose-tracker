@@ -4,10 +4,11 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
-import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
+import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader, CardBody } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./style.css";
 
 class Search extends Component {
   state = {
@@ -88,22 +89,23 @@ class Search extends Component {
           <Row>
             <Col md="3" sm="6">
               <ProfileCard />
-              <Form>
-                <h4>Date</h4>
-                <FormGroup className="fuckery">
+              <Card className="mt-3">
+                <CardHeader className="">Search by Date</CardHeader>
+              <Form className="mt-3 p-3">
+                <FormGroup className="">
                   <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
                     // withPortal
                   />
                 </FormGroup>
-                <Button onClick={() => this.getFromDatabase()}>Search</Button>
+                <Button id="button" block onClick={() => this.getFromDatabase()}>Search</Button>
                 </Form>
+                </Card>
             </Col>
             <Col md="9" sm="12">
             
                 <DiabetesChart
-                  className="duhbetis"
                   results={this.state.results}
                   generateData={this.generateData}
                 />
@@ -111,7 +113,8 @@ class Search extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md="12">
+            <Col className="mx-auto" md="8">
+              <h2 className="text-center border-bottom m-3">Entry Log</h2>
               <SearchResults
                 editData={this.state.chartData}
                 delete={this.delete}

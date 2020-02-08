@@ -96,15 +96,15 @@ class Main extends React.Component {
         <Row>
           <Col md="3">
             <ProfileCard />
-          </Col>
-          <Col md="9">
-            <Moment local>{this.state.today}</Moment>
+            {/* <Moment local>{this.state.today}</Moment> */}
             <InputForm
               className="formBar"
               saveToDatabase={this.saveToDatabase}
               value={this.state.glucoseLevel}
               onChange={this.handleInputChange}
             />
+          </Col>
+          <Col md="9">
 
             <DiabetesChart
               results={this.state.results}
