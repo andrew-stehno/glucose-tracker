@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
 import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
-import Moment from "react-moment";
 import "moment-timezone";
 import moment from "moment-timezone";
 
@@ -72,7 +71,6 @@ class Search extends Component {
 
   generateData = (start, end, step) => {
     const data = this.state.chartData;
-    // console.log("data", data);
 
     return data;
   };

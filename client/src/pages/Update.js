@@ -29,7 +29,6 @@ class Update extends Component {
     this.setState({
       [name]: value
     });
-    console.log(this.state.updatedGlucose);
   };
 
   getRecord() {
@@ -51,8 +50,6 @@ class Update extends Component {
       date: this.state.records.date,
       glucose: this.state.updatedGlucose
     };
-    console.log(id)
-    console.log(newData);
     API.updateRecord(
       id,
       newData
@@ -70,7 +67,6 @@ class Update extends Component {
         this.setState({
           records: res.data
         });
-        console.log(this.state.records)
       })
       .catch(err => console.log(err));
   };
