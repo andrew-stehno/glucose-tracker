@@ -1,4 +1,5 @@
 import React from "react";
+import "./mainStyle.css";
 import history from "./utils/history";
 import NavBar from "./components/NavBar/NavBar";
 import { Router, Route, Switch } from "react-router-dom";
