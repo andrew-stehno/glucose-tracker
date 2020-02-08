@@ -3,7 +3,11 @@ import {
   Container,
   ListGroup,
   ListGroupItem,
-  Button
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  CardHeader
 } from "reactstrap";
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -14,14 +18,29 @@ function SearchResults(props) {
       {props.editData.length ? (
         <ListGroup>
           {props.editData.map(info => (
-            <ListGroupItem>
-              <Link to={"/update/" + info.id}>
-                Click here to update your value.
-              </Link>
-                {" "}<strong>Date:</strong> {info.calender[0]},{" "}
-                <strong>Time:</strong> {info.date}, <strong>Value:</strong>{" "}
-                {info.value}
-              <Button onClick={() => props.delete(info.id)}>Delete</Button>
+            <ListGroupItem className="p-0">
+              <Card>
+                <CardHeader>
+                  {" "}
+                  <strong>Date:</strong> {info.calender[0]},{" "}
+                  <strong>Time:</strong> {info.date}, <strong>Value:</strong>{" "}
+                  {info.value}
+                </CardHeader>
+                <CardBody>
+                  <CardTitle>
+                    <strong>Manage Item:</strong>
+                    <Button color="danger" onClick={() => props.delete(info.id)}>
+                      Delete
+                    </Button>
+                    <Link
+                      className="btn-primary btn mr-2"
+                      to={"/update/" + info.id}
+                    >
+                      Update
+                    </Link>
+                  </CardTitle>
+                </CardBody>
+              </Card>
             </ListGroupItem>
           ))}
         </ListGroup>

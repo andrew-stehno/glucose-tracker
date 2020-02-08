@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
-import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
+import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader, CardBody } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
@@ -88,22 +88,23 @@ class Search extends Component {
           <Row>
             <Col md="3" sm="6">
               <ProfileCard />
-              <Form>
-                <h4>Date</h4>
-                <FormGroup className="fuckery">
+              <Card className="mt-3">
+                <CardHeader className="">Date</CardHeader>
+              <Form className="mt-3 p-3">
+                <FormGroup className="">
                   <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
                     // withPortal
                   />
                 </FormGroup>
-                <Button onClick={() => this.getFromDatabase()}>Search</Button>
+                <Button block onClick={() => this.getFromDatabase()}>Search</Button>
                 </Form>
+                </Card>
             </Col>
             <Col md="9" sm="12">
             
                 <DiabetesChart
-                  className="duhbetis"
                   results={this.state.results}
                   generateData={this.generateData}
                 />
