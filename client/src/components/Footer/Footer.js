@@ -40,6 +40,9 @@ const footer = (props) => {
       <div className="footer-copyright text-center py-3">
         <Container fluid>
           <p>Copyright:Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart</p>
+          <p>The Content is not intended to be a substitute for professional medical advice, diagnosis, or treatment. 
+            Always seek the advice of your physician or other qualified health provider 
+            with any questions you may have regarding a medical condition.</p>
         </Container>
       </div>
     </div>
