@@ -8,6 +8,7 @@ import { Row, Container, Col } from "reactstrap";
 import Moment from "react-moment";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./main.css";
 
 class Main extends React.Component {
   state = {
@@ -30,20 +31,19 @@ class Main extends React.Component {
   };
 
   toggleModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen })
-  }
-  
+    this.setState({ isModalOpen: !this.state.isModalOpen });
+  };
+
   saveToDatabase = () => {
     API.saveData({
       date: this.state.today,
       glucose: this.state.glucoseLevel
     })
       .then(res => {
-        console.log(res)
         this.getFromDatabase();
       })
       .then(() => {
-        this.toggleModal()
+        this.toggleModal();
       })
       .catch(err => console.log(err));
   };
@@ -60,9 +60,12 @@ class Main extends React.Component {
         // Massage raw data into useable data:
         const resData = this.state.results;
         const newArray = [];
-        for (let i = 0; i < resData.length; i++) {
-          const item = resData[i];
-          const testTime = moment.utc(item.date).tz('America/Denver').format();
+
+        resData.forEach(item => {
+          const testTime = moment
+            .utc(item.date)
+            .tz("America/Denver")
+            .format();
           let time = testTime.split(".", 1);
           let newTime = time[0].split("T");
           let setTime = newTime[1].split(":", 2);
@@ -74,7 +77,7 @@ class Main extends React.Component {
             date: realTime
           };
           newArray.unshift(newObj);
-        }
+        });
         this.setState({ chartData: newArray });
       })
       .catch(err => console.log(err));
@@ -97,6 +100,7 @@ class Main extends React.Component {
           <Col md="9">
             <Moment local>{this.state.today}</Moment>
             <InputForm
+              className="formBar"
               saveToDatabase={this.saveToDatabase}
               value={this.state.glucoseLevel}
               onChange={this.handleInputChange}
@@ -115,10 +119,9 @@ class Main extends React.Component {
             bsLevel={this.state.glucoseLevel}
           />
         )}
-
       </Container>
     );
-    }
-};
+  }
+}
 
 export default Main;

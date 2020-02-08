@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> development
 
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
@@ -11,6 +15,7 @@ const AlertHelper = (props) => {
         <ModalHeader toggle={props.toggle}>Glucose Levels</ModalHeader>
         <ModalBody>
 
+<<<<<<< HEAD
           <p>Less than 100 mg/dL: Consider eating a small snack with about 15 grams of carbs to keep your blood sugar
             from getting too low. Examples include a half cup of fruit juice, a small piece of fruit, or four crackers.
                 Glucose tabs are also a good choice.</p>
@@ -24,6 +29,11 @@ const AlertHelper = (props) => {
                 If ketones are present, call your doctor to see if you need to seek medical attention.</p>
           <p>Sometimes, doctors recommend you maintain tighter or higher blood sugar goals.
                 that’s why it’s important to talk with your doctor about goals for your glucose levels.</p>
+=======
+  <p>{messageText}</p>
+
+          
+>>>>>>> development
 
         </ModalBody>
         <ModalFooter>

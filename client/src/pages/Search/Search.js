@@ -6,6 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
 import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
+import "moment-timezone";
+import moment from "moment-timezone";
 
 class Search extends Component {
   state = {
@@ -42,23 +44,26 @@ class Search extends Component {
         // Massage raw data into useable data:
         const resData = this.state.results;
         const newArray = [];
-        for (let i = 0; i < resData.length; i++) {
-          const item = resData[i];
-          let date = item.date.split("T", 1);
-          let time = item.date.split(".", 1);
-          let newTime = time[0].split("T");
-          let setTime = newTime[1].split(":", 2);
-          let realTime = setTime.join(":");
+
+        resData.forEach(item => {
+          const testTime = moment
+            .utc(item.date)
+            .tz("America/Denver")
+            .format();
+          let date = testTime.split("-", 3);
+          let time = date[2].split("T");
+          let newTime = time[1].split(":", 2);
+          let setTime = newTime.join(":");
           let newObj = {
             id: item._id,
             value: item.glucose,
             high: 160,
             low: 100,
-            date: realTime,
+            date: setTime,
             calender: date
           };
           newArray.unshift(newObj);
-        }
+        });
         this.setState({ chartData: newArray });
       })
       .catch(err => console.log(err));
@@ -66,7 +71,6 @@ class Search extends Component {
 
   generateData = (start, end, step) => {
     const data = this.state.chartData;
-    // console.log("data", data);
 
     return data;
   };
@@ -82,24 +86,28 @@ class Search extends Component {
       <div>
         <Container>
           <Row>
-            <Col md="3">
+            <Col md="3" sm="6">
               <ProfileCard />
-            </Col>
-            <Col md="9">
               <Form>
                 <h4>Date</h4>
-                <FormGroup>
+                <FormGroup className="fuckery">
                   <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
+                    // withPortal
                   />
                 </FormGroup>
                 <Button onClick={() => this.getFromDatabase()}>Search</Button>
+                </Form>
+            </Col>
+            <Col md="9" sm="12">
+            
                 <DiabetesChart
+                  className="duhbetis"
                   results={this.state.results}
                   generateData={this.generateData}
                 />
-              </Form>
+              
             </Col>
           </Row>
           <Row>
