@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./style.css"
+
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 const AlertHelper = (props) => {
@@ -35,11 +35,15 @@ const AlertHelper = (props) => {
       <Modal isOpen={props.isOpen} toggle={props.toggle}>
         <ModalHeader toggle={props.toggle}>Glucose Levels</ModalHeader>
         <ModalBody>
-          <p>{messageText}</p>
+
+  <p>{messageText}</p>
+
+          
+
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={props.toggle}>Close</Button>{' '}
-
+          
         </ModalFooter>
       </Modal>
     </div>

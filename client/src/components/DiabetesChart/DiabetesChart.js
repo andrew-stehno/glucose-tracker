@@ -12,6 +12,7 @@ import {
 } from "@devexpress/dx-react-chart-bootstrap4";
 import { EventTracker } from '@devexpress/dx-react-chart';
 import "@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css";
+import "./style.css"
 
 export default class DiabetesChart extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class DiabetesChart extends React.Component {
     
     return (
       <div>
-      <Chart data={data} width={"auto"} height={600} >
+      <Chart className="test" data={data} width={"auto"} height={600} >
         <ArgumentAxis showGrid />
         <ValueAxis showLabels="false"/>
         <SplineSeries name="mg/dl" valueField="value" argumentField="date" />
