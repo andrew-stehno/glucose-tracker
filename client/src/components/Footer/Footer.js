@@ -7,7 +7,7 @@ const footer = () => {
     <div color="blue" className="font-small pt-4 mt-4">
       <Container className="text-center text-md-left">
         <Row>
-          <Col md="4">
+          <Col md="6">
             <h5 className="title">Resources</h5>
             <p>
             No matter where you are in your fight, here’s where you need to be. Whether you’ve 
@@ -19,7 +19,7 @@ const footer = () => {
             All you have to do is take action and stick with it.
             </p>
           </Col>
-          <Col md="4">
+          <Col md="3">
           <h5 className="title">Resources</h5>
             <ul>
               <li className="list-unstyled">
@@ -36,7 +36,7 @@ const footer = () => {
               </li>
             </ul>
           </Col>
-          <Col md="4">
+          <Col md="3">
           <h5 className="title">Links</h5>
             <ul>
               <li className="list-unstyled">

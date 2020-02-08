@@ -8,6 +8,7 @@ import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader, CardBod
 import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./style.css";
 
 class Search extends Component {
   state = {
@@ -89,7 +90,7 @@ class Search extends Component {
             <Col md="3" sm="6">
               <ProfileCard />
               <Card className="mt-3">
-                <CardHeader className="">Date</CardHeader>
+                <CardHeader className="">Search by Date</CardHeader>
               <Form className="mt-3 p-3">
                 <FormGroup className="">
                   <DatePicker
@@ -98,7 +99,7 @@ class Search extends Component {
                     // withPortal
                   />
                 </FormGroup>
-                <Button block onClick={() => this.getFromDatabase()}>Search</Button>
+                <Button id="button" block onClick={() => this.getFromDatabase()}>Search</Button>
                 </Form>
                 </Card>
             </Col>
@@ -112,7 +113,8 @@ class Search extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md="12">
+            <Col className="mx-auto" md="8">
+              <h2 className="text-center border-bottom m-3">Entry Log</h2>
               <SearchResults
                 editData={this.state.chartData}
                 delete={this.delete}

@@ -19,7 +19,7 @@ function SearchResults(props) {
         <ListGroup>
           {props.editData.map(info => (
             <ListGroupItem className="p-0">
-              <Card>
+              <Card className="mb-3">
                 <CardHeader>
                   {" "}
                   <strong>Date:</strong> {info.calender[0]},{" "}
