@@ -7,7 +7,8 @@ const Hero = (props) => {
   return (
     <div>
       <Jumbotron className="heroImg" fluid>
-        <Container fluid>
+        <Container>
+          
           <h1 className="display-4 text">Welcome to SUGAR PIN</h1>
           <p className="lead">Your one stop for Diabetes help.</p>
         </Container>

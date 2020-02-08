@@ -4,6 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import ArticleCarousel from "../../components/ArticleCarousel/ArticleCarousel"
 import Navbar from "../../components/NavBar/NavBar";
 import Hero from "../../components/Hero/Hero"
+import Article from "../../components/Articles/Articles"
 
 
 
@@ -14,7 +15,8 @@ const Login = () => {
         <div>
         {/* <Hero /> */}
         {/* <Jumbotron />, */}
-        <ArticleCarousel />, 
+        {/* <ArticleCarousel />,  */}
+        <Article />
         <Footer />
         </div>
     )

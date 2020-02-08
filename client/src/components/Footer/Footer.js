@@ -4,9 +4,9 @@ import { Col, Container, Row } from "reactstrap";
 const footer = (props) => {
   return (
     <div color="blue" className="font-small pt-4 mt-4">
-      <Container fluid className="text-center text-md-left">
+      <Container className="text-center text-md-left">
         <Row>
-          <Col md="6">
+          <Col md="4">
             <h5 className="title">Resources</h5>
             <p>
             No matter where you are in your fight, here’s where you need to be. Whether you’ve 
@@ -18,8 +18,25 @@ const footer = (props) => {
             All you have to do is take action and stick with it.
             </p>
           </Col>
-          <Col md="6">
-            <h5 className="title">Links</h5>
+          <Col md="4">
+          <h5 className="title">Resources</h5>
+            <ul>
+              <li className="list-unstyled">
+                <a href="https://www.diabetesselfmanagement.com/education/diabetes-101/" target="_blank">Diabetes 101</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="https://www.diabetesdaily.com/blog/diabetes-eye-screenings-why-they-are-important-and-challenging-639862/" target="_blank">Diabetes and your eyes</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="https://diatribe.org/diabetes-blogs-and-forums" target="_blank">diaTribe Learn</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="https://www.cdc.gov/diabetes/basics/diabetes.html" target="_blank">The Basics</a>
+              </li>
+            </ul>
+          </Col>
+          <Col md="4">
+          <h5 className="title">Links</h5>
             <ul>
               <li className="list-unstyled">
                 <a href="https://www.diabetes.org/">https://www.diabetes.org/</a>
