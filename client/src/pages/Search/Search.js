@@ -1,6 +1,7 @@
+import React, { Component } from "react";
+import { useAuth0 } from "../../react-auth0-spa";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
-import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
@@ -9,16 +10,28 @@ import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
 
-class Search extends Component {
-  state = {
-    startDate: new Date(),
-    results: [],
-    chartData: []
+const withMainHOC = Component => {
+  return function(props) {
+    const { user } = useAuth0();
+    return <Component {...props} user={user} />;
   };
+};
 
-  componentDidMount() {
-    this.getFromDatabase();
+class Search extends Component {
+  constructor() {
+    super();
+    this.state = {
+      startDate: new Date(),
+      results: [],
+      chartData: []
+    };
   }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.user && this.props.user) {
+      this.getFromDatabase()
+    }
+  };
 
   handleChange = date => {
     this.setState({
@@ -34,9 +47,12 @@ class Search extends Component {
     console.log(this.state.update);
   };
 
-  getFromDatabase = () => {
-    let date = this.state.startDate;
-    API.getByDay(date)
+  getFromDatabase = (props) => {
+    let data = {
+      date: this.state.startDate,
+      userId: this.props.user.sub
+    }
+    API.getByDay(data)
       .then(res => {
         this.setState({
           results: res.data
@@ -98,16 +114,14 @@ class Search extends Component {
                   />
                 </FormGroup>
                 <Button onClick={() => this.getFromDatabase()}>Search</Button>
-                </Form>
+              </Form>
             </Col>
             <Col md="9" sm="12">
-            
-                <DiabetesChart
-                  className="duhbetis"
-                  results={this.state.results}
-                  generateData={this.generateData}
-                />
-              
+              <DiabetesChart
+                className="duhbetis"
+                results={this.state.results}
+                generateData={this.generateData}
+              />
             </Col>
           </Row>
           <Row>
@@ -124,4 +138,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withMainHOC(Search);

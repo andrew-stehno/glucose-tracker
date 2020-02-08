@@ -22,16 +22,16 @@ const footer = () => {
           <h5 className="title">Resources</h5>
             <ul>
               <li className="list-unstyled">
-                <a href="https://www.diabetesselfmanagement.com/education/diabetes-101/" target="_blank">Diabetes 101</a>
+                <a href="https://www.diabetesselfmanagement.com/education/diabetes-101/" rel="noopener noreferrer" target="_blank">Diabetes 101</a>
               </li>
               <li className="list-unstyled">
-                <a href="https://www.diabetesdaily.com/blog/diabetes-eye-screenings-why-they-are-important-and-challenging-639862/" target="_blank">Diabetes and your eyes</a>
+                <a href="https://www.diabetesdaily.com/blog/diabetes-eye-screenings-why-they-are-important-and-challenging-639862/" rel="noopener noreferrer" target="_blank">Diabetes and your eyes</a>
               </li>
               <li className="list-unstyled">
-                <a href="https://diatribe.org/diabetes-blogs-and-forums" target="_blank">diaTribe Learn</a>
+                <a href="https://diatribe.org/diabetes-blogs-and-forums" rel="noopener noreferrer" target="_blank">diaTribe Learn</a>
               </li>
               <li className="list-unstyled">
-                <a href="https://www.cdc.gov/diabetes/basics/diabetes.html" target="_blank">The Basics</a>
+                <a href="https://www.cdc.gov/diabetes/basics/diabetes.html" rel="noopener noreferrer" target="_blank">The Basics</a>
               </li>
             </ul>
           </Col>

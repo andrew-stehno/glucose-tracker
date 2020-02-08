@@ -55,7 +55,7 @@ const navBar = props => {
 
             <NavItem>
               {isAuthenticated && (
-                <button onClick={() => logout()}>Log out</button>
+                <button className="btn" onClick={() => logout()}>Log out</button>
               )}
             </NavItem>
           </Nav>
