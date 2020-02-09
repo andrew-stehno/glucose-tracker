@@ -5,7 +5,7 @@ import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
-import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader, CardBody } from "reactstrap";
+import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";

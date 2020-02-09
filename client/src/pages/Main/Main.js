@@ -112,10 +112,10 @@ class Main extends React.Component {
   render() {
     return (
       <Container>
+        <Row><h2><Moment local>{this.state.today}</Moment></h2></Row>
         <Row>
           <Col md="3">
             <ProfileCard />
-            {/* <Moment local>{this.state.today}</Moment> */}
             <InputForm
               className="formBar"
               saveToDatabase={this.saveToDatabase}
@@ -124,7 +124,6 @@ class Main extends React.Component {
             />
           </Col>
           <Col md="9">
-
             <DiabetesChart
               results={this.state.results}
               generateData={this.generateData}

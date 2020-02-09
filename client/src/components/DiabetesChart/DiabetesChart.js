@@ -5,7 +5,6 @@ import {
   ValueAxis,
   SplineSeries,
   ScatterSeries,
-  Legend,
   Title,
   ZoomAndPan,
   Tooltip
