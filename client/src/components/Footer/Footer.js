@@ -7,7 +7,7 @@ const footer = () => {
       <Container className="text-center text-md-left">
         <Row>
           <Col md="4">
-            <h5 className="title">Resources</h5>
+            <h5 className="title"></h5>
             <p>
             No matter where you are in your fight, here’s where you need to be. Whether you’ve 
             been newly diagnosed, have been fighting against type 1 or type 2 diabetes for a while, 
@@ -57,6 +57,7 @@ const footer = () => {
       <div className="footer-copyright text-center py-3">
         <Container fluid>
           <p>Copyright Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart &copy;</p>
+          <p className="disclaimer">WARNING!!! The Content is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
         </Container>
       </div>
     </div>

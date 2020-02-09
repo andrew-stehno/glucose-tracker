@@ -30,7 +30,7 @@ export default class DiabetesChart extends React.Component {
     const splinePoint = { size: 10 };
     
     return (
-      <div>
+      <div id="background">
       <Chart className="test" data={data} width={"auto"} height={600} >
         <ArgumentAxis showGrid />
         <ValueAxis showLabels="false"/>

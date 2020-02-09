@@ -92,12 +92,13 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Container>
+      // <div id="videoDiv">
+      //   <div id="videoBlock">
+      //     <video preload="preload" id="video" 
+      <Container className="container">
         <Row>
           <Col md="3">
             <ProfileCard />
-          </Col>
-          <Col md="9">
             <Moment local>{this.state.today}</Moment>
             <InputForm
               className="formBar"
@@ -105,7 +106,8 @@ class Main extends React.Component {
               value={this.state.glucoseLevel}
               onChange={this.handleInputChange}
             />
-
+          </Col>
+          <Col md="9">
             <DiabetesChart
               results={this.state.results}
               generateData={this.generateData}
@@ -120,6 +122,9 @@ class Main extends React.Component {
           />
         )}
       </Container>
+      // </div>
+      // </div>
+
     );
   }
 }
