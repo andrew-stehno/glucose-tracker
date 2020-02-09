@@ -11,6 +11,8 @@ import {
   Input
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import "moment-timezone";
+import moment from "moment-timezone";
 
 class Update extends Component {
   state = {
@@ -37,11 +39,12 @@ class Update extends Component {
         this.setState({
           records: res.data
         });
-        let date = this.state.records.date.split("T", 1);
+        const timeStamp = moment.utc(this.state.records.date).tz("America/Denver").format();
+        let date = timeStamp.split("T", 1);
         let dateX = date[0].split("-");
         let dateY = dateX.reverse();
         let newDate = dateY.join("-");
-        let time = this.state.records.date.split(".", 1);
+        let time = timeStamp.split(".", 1);
         let timeX = time[0].split("T");
         let timeY = timeX[1].split(":", 2);
         let newTime = timeY.join(":");
@@ -55,12 +58,9 @@ class Update extends Component {
       date: this.state.records.date,
       glucose: this.state.updatedGlucose
     };
-    API.updateRecord(
-      id,
-      newData
-    )
+    API.updateRecord(id, newData)
       .then(res => {
-        this.setState({updatedGlucose: ""})
+        this.setState({ updatedGlucose: "" });
         this.getFromDatabase(id);
       })
       .catch(err => console.log(err));

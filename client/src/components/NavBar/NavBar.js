@@ -27,7 +27,7 @@ const navBar = props => {
     <div>
       <Navbar className="navBar mb-5" color="blue" light expand="md">
         <NavbarBrand>
-          <a href="/Main">
+          <a href="/">
             <img width="200" src="../images/sugar_pin_logo.png" alt="pricked finger logo" />
           </a>
         </NavbarBrand>
