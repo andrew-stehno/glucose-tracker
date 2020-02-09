@@ -38,9 +38,14 @@ class Update extends Component {
           records: res.data
         });
         let date = this.state.records.date.split("T", 1);
+        let dateX = date[0].split("-");
+        let dateY = dateX.reverse();
+        let newDate = dateY.join("-");
         let time = this.state.records.date.split(".", 1);
-        let newTime = time[0].split("T");
-        this.setState({ date: date, time: newTime[1] });
+        let timeX = time[0].split("T");
+        let timeY = timeX[1].split(":", 2);
+        let newTime = timeY.join(":");
+        this.setState({ date: newDate, time: newTime });
       })
       .catch(err => console.log(err));
   }

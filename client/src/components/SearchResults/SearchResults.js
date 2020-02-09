@@ -45,7 +45,7 @@ function SearchResults(props) {
           ))}
         </ListGroup>
       ) : (
-        <h3>There is no saved data for this date.</h3>
+        <h3 className="noData">There is no saved data for this date.</h3>
       )}
     </Container>
   );

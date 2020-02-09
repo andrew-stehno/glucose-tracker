@@ -67,10 +67,15 @@ class Search extends Component {
             .utc(item.date)
             .tz("America/Denver")
             .format();
-          let date = testTime.split("-", 3);
-          let time = date[2].split("T");
-          let newTime = time[1].split(":", 2);
-          let setTime = newTime.join(":");
+            let date = testTime.split("T", 1);
+            // let dateSplit = date[0].split("-");
+            // let dateRev = dateSplit.reverse();
+            // let newDate = dateRev.join("-");
+            // console.log(newDate)
+            let dateTime = testTime.split("-", 3);
+            let time = dateTime[2].split("T");
+            let newTime = time[1].split(":", 2);
+            let setTime = newTime.join(":");
           let newObj = {
             id: item._id,
             value: item.glucose,
