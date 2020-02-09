@@ -7,8 +7,10 @@ module.exports = {
       date: {
         $gte: new Date(req.params.date).setHours(00, 00, 00),
         $lt: new Date(req.params.date).setHours(23, 59, 59)
+        
       }
     })
+      .where({"userId": req.body.userId})
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

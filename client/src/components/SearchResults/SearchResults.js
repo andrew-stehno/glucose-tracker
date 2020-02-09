@@ -30,13 +30,13 @@ function SearchResults(props) {
                   <CardTitle>
                     <strong>Manage Item:</strong>
                     <Button color="danger" onClick={() => props.delete(info.id)}>
-                      Delete
+                      X
                     </Button>
                     <Link
                       className="btn-primary btn mr-2"
                       to={"/update/" + info.id}
                     >
-                      Update
+                      Edit
                     </Link>
                   </CardTitle>
                 </CardBody>
@@ -45,7 +45,7 @@ function SearchResults(props) {
           ))}
         </ListGroup>
       ) : (
-        <h3>There is no saved data for this date.</h3>
+        <h3 className="noData">There is no saved data for this date.</h3>
       )}
     </Container>
   );

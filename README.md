@@ -1,14 +1,16 @@
-# Create React Express App
+# Sugar Pin
 
-## About This Boilerplate
+## About This Project
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+Sugar Pin is a tool which allows diabetics to track daily blood sugar levels in a convenient app.  Pins are dropped into a graph displaying trends throughout the day.  High and low norms are listed aswell, any levels which are out of these norms will prompt a gentle suggestion.  Users are able to search and edit past data as well.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Dependencies used
+
+* 
 
 ## Starting the app locally
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+Start by installing front and backend dependencies. While in this directory, run the following command from the terminal:
 
 ```
 npm install
@@ -26,4 +28,4 @@ Your app should now be running on <http://localhost:3000>. The Express server sh
 
 ## Deployment (Heroku)
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+[heroku](https://glucose-tracker-2020.herokuapp.com/)
