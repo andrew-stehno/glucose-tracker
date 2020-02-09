@@ -6,7 +6,7 @@ import { Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main/Main";
 import Search from "./pages/Search/Search";
 
-import Update from "./pages/Update";
+import Update from "./pages/Update/Update";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from "./pages/Login/Login";
 

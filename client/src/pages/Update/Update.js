@@ -1,6 +1,6 @@
-import ProfileCard from "../components/ProfileCard/ProfileCard";
+import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import React, { Component } from "react";
-import API from "../utils/API";
+import API from "../../utils/API";
 import {
   Row,
   Container,
@@ -87,7 +87,7 @@ class Update extends Component {
             <strong>Date:</strong> {this.state.date}, <strong>Time:</strong>{" "}
             {this.state.time}, <strong>Value:</strong>{" "}
             {this.state.records.glucose}
-            <p>Enter an updated value below:</p>
+            <p><strong>Enter an updated value below:</strong></p>
             <Form>
               <FormGroup>
                 <Input
