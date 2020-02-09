@@ -25,37 +25,39 @@ const navBar = props => {
 
   return (
     <div>
-      <Navbar className="navBar" color="blue" light expand="md">
-        <NavbarBrand>Sugar Pin</NavbarBrand>
+      <Navbar className="navBar mb-5" color="blue" light expand="md">
+        <NavbarBrand>
+          <a href="/">
+            <img width="200" src="../images/sugar_pin_logo.png" alt="pricked finger logo" />
+          </a>
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             {isAuthenticated && (
-              
-                <ul className="nav justify-content-end">
-                  <li>
-                  <NavLink href="/Main">Your Sugar Pin</NavLink>
-                  </li>
-                  <li>
-                  <NavLink href="/Search">Search</NavLink>
-                  </li>
-                </ul>
-    
+              <>
+                <NavLink href="/Main">Your Sugar Pin</NavLink>
+                <NavLink href="/Search">Search</NavLink>
+              </>
             )}
 
             <NavItem>
               <NavLink href="/">Home</NavLink>
             </NavItem>
-              
+
             <NavItem>
               {!isAuthenticated && (
-                <button onClick={() => loginWithRedirect({})}>Log in</button>
+                <NavLink onClick={() => loginWithRedirect({})}>
+                  Log in
+                </NavLink>
               )}
             </NavItem>
 
             <NavItem>
               {isAuthenticated && (
-                <button onClick={() => logout()}>Log out</button>
+                <NavLink onClick={() => logout()}>
+                  Log out
+                </NavLink>
               )}
             </NavItem>
           </Nav>
@@ -64,7 +66,5 @@ const navBar = props => {
     </div>
   );
 };
-
-            
 
 export default navBar;

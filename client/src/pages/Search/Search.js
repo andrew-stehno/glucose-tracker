@@ -1,24 +1,38 @@
+import React, { Component } from "react";
+import { useAuth0 } from "../../react-auth0-spa";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
-import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
-import { Row, Container, Col, Button, Form, FormGroup } from "reactstrap";
+import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./style.css";
+
+const withMainHOC = Component => {
+  return function(props) {
+    const { user } = useAuth0();
+    return <Component {...props} user={user} />;
+  };
+};
 
 class Search extends Component {
-  state = {
-    startDate: new Date(),
-    results: [],
-    chartData: []
-  };
-
-  componentDidMount() {
-    this.getFromDatabase();
+  constructor() {
+    super();
+    this.state = {
+      startDate: new Date(),
+      results: [],
+      chartData: []
+    };
   }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.user && this.props.user) {
+      this.getFromDatabase()
+    }
+  };
 
   handleChange = date => {
     this.setState({
@@ -34,9 +48,12 @@ class Search extends Component {
     console.log(this.state.update);
   };
 
-  getFromDatabase = () => {
-    let date = this.state.startDate;
-    API.getByDay(date)
+  getFromDatabase = (props) => {
+    let data = {
+      date: this.state.startDate,
+      userId: this.props.user.sub
+    }
+    API.getByDay(data)
       .then(res => {
         this.setState({
           results: res.data
@@ -50,10 +67,15 @@ class Search extends Component {
             .utc(item.date)
             .tz("America/Denver")
             .format();
-          let date = testTime.split("-", 3);
-          let time = date[2].split("T");
-          let newTime = time[1].split(":", 2);
-          let setTime = newTime.join(":");
+            let date = testTime.split("T", 1);
+            // let dateSplit = date[0].split("-");
+            // let dateRev = dateSplit.reverse();
+            // let newDate = dateRev.join("-");
+            // console.log(newDate)
+            let dateTime = testTime.split("-", 3);
+            let time = dateTime[2].split("T");
+            let newTime = time[1].split(":", 2);
+            let setTime = newTime.join(":");
           let newObj = {
             id: item._id,
             value: item.glucose,
@@ -88,22 +110,23 @@ class Search extends Component {
           <Row>
             <Col md="3" sm="6">
               <ProfileCard />
-              <Form>
-                <h4>Date</h4>
-                <FormGroup className="fuckery">
+              <Card className="mt-3">
+                <CardHeader className="">Search by Date</CardHeader>
+              <Form className="mt-3 p-3">
+                <FormGroup className="">
                   <DatePicker
                     selected={this.state.startDate}
                     onChange={this.handleChange}
                     // withPortal
                   />
                 </FormGroup>
-                <Button onClick={() => this.getFromDatabase()}>Search</Button>
+                <Button id="button" block onClick={() => this.getFromDatabase()}>Search</Button>
                 </Form>
+                </Card>
             </Col>
             <Col md="9" sm="12">
             
                 <DiabetesChart
-                  className="duhbetis"
                   results={this.state.results}
                   generateData={this.generateData}
                 />
@@ -111,7 +134,8 @@ class Search extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md="12">
+            <Col className="mx-auto" md="8">
+              <h2 className="text-center border-bottom m-3">Entry Log</h2>
               <SearchResults
                 editData={this.state.chartData}
                 delete={this.delete}
@@ -124,4 +148,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withMainHOC(Search);

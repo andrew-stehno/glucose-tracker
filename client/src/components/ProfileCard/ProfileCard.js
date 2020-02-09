@@ -8,7 +8,6 @@ import {
 
 const ProfileCard = () => {
   const { loading, user } = useAuth0();
-
   if (loading || !user) {
     return <div>Loading...</div>;
   }

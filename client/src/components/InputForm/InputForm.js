@@ -4,26 +4,30 @@ import {
   Button,
   Form,
   FormGroup,
-  Label,
-  Input
+  Input,
+  Card,
+  CardBody,
+  CardHeader
 } from "reactstrap";
 
 function InputForm(props) {
   return (
-    <Form id="form">
+    <Card className="mt-3">
+          <CardHeader>Enter Current Glucose</CardHeader>
+    <Form id="form" className="p-3">
       <FormGroup id="formGroup">
-        <Label id="label" for="glucose reading">
-          <h4>Glucose Levels</h4>
-        </Label>
+          <CardBody className="p-3">
         <Input id="input"
           type="text"
           name="glucoseLevel"
           placeholder="mg/dl"
           {...props}
         />
+        </CardBody>
       </FormGroup>
-      <Button id="button" onClick={props.saveToDatabase}>Submit</Button>
+      <Button id="button" block onClick={props.saveToDatabase}>Submit</Button>
     </Form>
+    </Card>
   );
 }
 export default InputForm;
