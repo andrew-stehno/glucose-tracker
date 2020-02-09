@@ -27,8 +27,8 @@ app.get("*", function(req, res) {
 });
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds049347.mlab.com:49347/heroku_b8gr0xth");
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/glucose-tracker");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds049347.mlab.com:49347/heroku_b8gr0xth");
+
 app.listen(PORT, function() {
   console.log(`API server now on port ${PORT}!`);
 });
