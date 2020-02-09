@@ -1,25 +1,39 @@
+import React, { Component } from "react";
+import { useAuth0 } from "../../react-auth0-spa";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
-import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import API from "../../utils/API";
-import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader, CardBody } from "reactstrap";
+import { Row, Container, Col, Button, Form, FormGroup, Card, CardHeader } from "reactstrap";
 import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
 import "./style.css";
+import { BrowserRouter } from "react-router-dom";
+
+const withMainHOC = Component => {
+  return function(props) {
+    const { user } = useAuth0();
+    return <Component {...props} user={user} />;
+  };
+};
 
 class Search extends Component {
-  state = {
-    startDate: new Date(),
-    results: [],
-    chartData: []
-  };
-
-  componentDidMount() {
-    this.getFromDatabase();
+  constructor() {
+    super();
+    this.state = {
+      startDate: new Date(),
+      results: [],
+      chartData: []
+    };
   }
+  
+  componentDidUpdate(prevProps) {
+    if (!prevProps.user && this.props.user) {
+      this.getFromDatabase()
+    }
+  };
 
   handleChange = date => {
     this.setState({
@@ -35,9 +49,12 @@ class Search extends Component {
     console.log(this.state.update);
   };
 
-  getFromDatabase = () => {
-    let date = this.state.startDate;
-    API.getByDay(date)
+  getFromDatabase = (props) => {
+    let data = {
+      date: this.state.startDate,
+      userId: this.props.user.sub
+    }
+    API.getByDay(data)
       .then(res => {
         this.setState({
           results: res.data
@@ -51,10 +68,15 @@ class Search extends Component {
             .utc(item.date)
             .tz("America/Denver")
             .format();
-          let date = testTime.split("-", 3);
-          let time = date[2].split("T");
-          let newTime = time[1].split(":", 2);
-          let setTime = newTime.join(":");
+            let date = testTime.split("T", 1);
+            // let dateSplit = date[0].split("-");
+            // let dateRev = dateSplit.reverse();
+            // let newDate = dateRev.join("-");
+            // console.log(newDate)
+            let dateTime = testTime.split("-", 3);
+            let time = dateTime[2].split("T");
+            let newTime = time[1].split(":", 2);
+            let setTime = newTime.join(":");
           let newObj = {
             id: item._id,
             value: item.glucose,
@@ -85,6 +107,7 @@ class Search extends Component {
   render() {
     return (
       <div>
+        <BrowserRouter forceRefresh={true}/>
         <Container>
           <Row>
             <Col md="3" sm="6">
@@ -118,6 +141,7 @@ class Search extends Component {
               <SearchResults
                 editData={this.state.chartData}
                 delete={this.delete}
+                windowReload={this.windowReload}
               />
             </Col>
           </Row>
@@ -127,4 +151,4 @@ class Search extends Component {
   }
 }
 
-export default Search;
+export default withMainHOC(Search);

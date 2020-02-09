@@ -7,9 +7,9 @@ const footer = () => {
     <div color="blue" className="font-small pt-4 mt-4">
       <Container className="text-center text-md-left">
         <Row>
-          <Col md="6">
-            <h5 className="title">Resources</h5>
-            <p>
+          {/* <Col md="6"> */}
+            {/* <h5 className="title">Resources</h5> */}
+            {/* <p>
               No matter where you are in your fight, here’s where you need to
               be. Whether you’ve been newly diagnosed, have been fighting
               against type 1 or type 2 diabetes for a while, or are helping a
@@ -19,8 +19,8 @@ const footer = () => {
               Wherever you’re at with this disease, know that you have options
               and that you don’t have to be held back. You can still live your
               best life. All you have to do is take action and stick with it.
-            </p>
-          </Col>
+            </p> */}
+          {/* </Col> */}
           <Col md="3">
           <h5 className="title">Resources</h5>
             <ul>

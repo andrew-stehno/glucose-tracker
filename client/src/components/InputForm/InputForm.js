@@ -4,12 +4,10 @@ import {
   Button,
   Form,
   FormGroup,
-  Label,
   Input,
   Card,
   CardBody,
-  CardHeader,
-  CardText
+  CardHeader
 } from "reactstrap";
 
 function InputForm(props) {

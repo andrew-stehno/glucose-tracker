@@ -29,7 +29,7 @@ const Article = props => {
               />
               <CardImgOverlay>
                 <Row>
-                  <Col md="8">
+                  <Col  sm="4" lg="4" md="12">
                     <CardText className="cardTextMain">
                       {" "}
                       No matter where you are in your fight, here is where you

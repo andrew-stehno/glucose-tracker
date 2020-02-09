@@ -1,5 +1,4 @@
 import React from "react";
-import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer";
 import ArticleCarousel from "../../components/ArticleCarousel/ArticleCarousel";
 import Navbar from "../../components/NavBar/NavBar";
