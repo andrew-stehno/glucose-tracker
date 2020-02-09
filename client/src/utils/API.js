@@ -2,13 +2,12 @@ import axios from "axios";
 
 export default {
   // Gets data by day
-  getByDay: function(date) {
-      // console.log("api date: " + date);
-    return axios.get("/api/glucose/date/" + date);
+  getByDay: function(data) {
+    return axios.post("/api/glucose/date/" + data.date , {userId: data.userId});
   },
   // Save input data to database
-  saveData: function(data) {
-    return axios.post("/api/glucose/", data);
+  saveData: function(data, user) {
+    return axios.post("/api/glucose/", data, user);
   },
   // Gets data by id
   getOneRecord: function(id) {

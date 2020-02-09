@@ -1,10 +1,11 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
+import "./Footer.css";
 
-const footer = (props) => {
+const footer = () => {
   return (
     <div color="blue" className="font-small pt-4 mt-4">
-      <Container fluid className="text-center text-md-left">
+      <Container className="text-center text-md-left">
         <Row>
           <Col md="6">
             <h5 className="title">Resources</h5>
@@ -18,8 +19,25 @@ const footer = (props) => {
             All you have to do is take action and stick with it.
             </p>
           </Col>
-          <Col md="6">
-            <h5 className="title">Links</h5>
+          <Col md="3">
+          <h5 className="title">Resources</h5>
+            <ul>
+              <li className="list-unstyled">
+                <a href="https://www.diabetesselfmanagement.com/education/diabetes-101/" rel="noopener noreferrer" target="_blank">Diabetes 101</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="https://www.diabetesdaily.com/blog/diabetes-eye-screenings-why-they-are-important-and-challenging-639862/" rel="noopener noreferrer" target="_blank">Diabetes and your eyes</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="https://diatribe.org/diabetes-blogs-and-forums" rel="noopener noreferrer" target="_blank">diaTribe Learn</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="https://www.cdc.gov/diabetes/basics/diabetes.html" rel="noopener noreferrer" target="_blank">The Basics</a>
+              </li>
+            </ul>
+          </Col>
+          <Col md="3">
+          <h5 className="title">Links</h5>
             <ul>
               <li className="list-unstyled">
                 <a href="https://www.diabetes.org/">https://www.diabetes.org/</a>
@@ -39,7 +57,7 @@ const footer = (props) => {
       </Container>
       <div className="footer-copyright text-center py-3">
         <Container fluid>
-          <p>Copyright:Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart</p>
+          <p>Copyright Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart &copy;</p>
         </Container>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth0 } from "../../react-auth0-spa";
 import ProfileCard from "../../components/ProfileCard/ProfileCard";
 import DiabetesChart from "../../components/DiabetesChart/DiabetesChart";
 import InputForm from "../../components/InputForm/InputForm";
@@ -8,19 +9,32 @@ import { Row, Container, Col } from "reactstrap";
 import Moment from "react-moment";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./main.css";
+
+const withMainHOC = Component => {
+  return function(props) {
+    const { user } = useAuth0();
+    return <Component {...props} user={user} />;
+  }
+};
 
 class Main extends React.Component {
-  state = {
-    today: moment().format(),
-    glucoseLevel: "",
-    results: [],
-    chartData: [],
-    isModalOpen: false
-  };
-
-  componentDidMount() {
-    this.getFromDatabase();
+  constructor() {
+    super();
+    this.state = {
+      today: moment().format(),
+      glucoseLevel: "",
+      results: [],
+      chartData: [],
+      isModalOpen: false
+    };
   }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.user && this.props.user) {
+      this.getFromDatabase()
+    }
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -30,27 +44,30 @@ class Main extends React.Component {
   };
 
   toggleModal = () => {
-    this.setState({ isModalOpen: !this.state.isModalOpen })
-  }
-  
-  saveToDatabase = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen });
+  };
+
+  saveToDatabase = (props) => {
     API.saveData({
       date: this.state.today,
-      glucose: this.state.glucoseLevel
+      glucose: this.state.glucoseLevel,
+      userId: this.props.user.sub
     })
       .then(res => {
-        console.log(res)
         this.getFromDatabase();
       })
       .then(() => {
-        this.toggleModal()
+        this.toggleModal();
       })
       .catch(err => console.log(err));
   };
 
-  getFromDatabase = () => {
-    let date = this.state.today;
-    API.getByDay(date)
+  getFromDatabase = (props) => {
+    let data = {
+      date: this.state.today,
+      userId: this.props.user.sub
+    }
+    API.getByDay(data)
       .then(res => {
         this.setState({
           results: res.data,
@@ -60,9 +77,12 @@ class Main extends React.Component {
         // Massage raw data into useable data:
         const resData = this.state.results;
         const newArray = [];
-        for (let i = 0; i < resData.length; i++) {
-          const item = resData[i];
-          const testTime = moment.utc(item.date).tz('America/Denver').format();
+
+        resData.forEach(item => {
+          const testTime = moment
+            .utc(item.date)
+            .tz("America/Denver")
+            .format();
           let time = testTime.split(".", 1);
           let newTime = time[0].split("T");
           let setTime = newTime[1].split(":", 2);
@@ -74,7 +94,7 @@ class Main extends React.Component {
             date: realTime
           };
           newArray.unshift(newObj);
-        }
+        });
         this.setState({ chartData: newArray });
       })
       .catch(err => console.log(err));
@@ -87,21 +107,23 @@ class Main extends React.Component {
     return data;
   };
 
+  email = () => {};
+
   render() {
     return (
       <Container>
+        <Row><h2><Moment local>{this.state.today}</Moment></h2></Row>
         <Row>
           <Col md="3">
             <ProfileCard />
-          </Col>
-          <Col md="9">
-            <Moment local>{this.state.today}</Moment>
             <InputForm
+              className="formBar"
               saveToDatabase={this.saveToDatabase}
               value={this.state.glucoseLevel}
               onChange={this.handleInputChange}
             />
-
+          </Col>
+          <Col md="9">
             <DiabetesChart
               results={this.state.results}
               generateData={this.generateData}
@@ -115,10 +137,9 @@ class Main extends React.Component {
             bsLevel={this.state.glucoseLevel}
           />
         )}
-
       </Container>
     );
-    }
-};
+  }
+}
 
-export default Main;
+export default withMainHOC(Main);

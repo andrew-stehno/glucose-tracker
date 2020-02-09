@@ -1,22 +1,17 @@
 import React from "react";
-import Jumbotron from "../../components/Jumbotron/Jumbotron";
 import Footer from "../../components/Footer/Footer";
-
-
-
-
+import Article from "../../components/Articles/Articles";
 
 const Login = () => {
-    return (
-        <div>
-        <Jumbotron />,
-        <Footer />
-        </div>
-    )
-
+  return (
+    <div>
+      {/* <Hero /> */}
+      {/* <Jumbotron />, */}
+      {/* <ArticleCarousel />,  */}
+      <Article />
+      <Footer />
+    </div>
+  );
 };
 
- 
-
 export default Login;
-
