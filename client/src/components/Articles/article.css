@@ -1,0 +1,13 @@
+.cardTextMain {
+    display: block;
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.cardImg {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #54defd;
+}
