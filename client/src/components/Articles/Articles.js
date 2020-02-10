@@ -29,19 +29,14 @@ const Article = props => {
               />
               <CardImgOverlay>
                 <Row>
-                  <Col  sm="4" lg="4" md="12">
+                  <Col sm="4" lg="4" md="12">
                     <CardText className="cardTextMain">
-                      {" "}
-                      No matter where you are in your fight, here is where you
-                      need to be. Whether you’ve been newly diagnosed, have been
-                      fighting against type 1 or type 2 diabetes or
-                      are helping a loved one, you’ve come to the right place.
-                      This is the start of gaining a deeper understanding of how
-                      you can live a healthier life—with all the tools, health
-                      tips, and food ideas you need. Wherever you’re at with
-                      this disease, know that you have options and that you
-                      don’t have to be held back. You can still live your best
-                      life, all you have to do is take action and stick with it.
+                      <h1 className="titleText">
+                        {" "}
+                        Welcome To Sugar Pin! &reg;
+                        <br />
+                        Please sign in to view your data!
+                      </h1>
                     </CardText>
                   </Col>
                 </Row>
