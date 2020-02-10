@@ -10,7 +10,7 @@ import {
   FormGroup,
   Input
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect, BrowserRouter } from "react-router-dom";
 import "moment-timezone";
 import moment from "moment-timezone";
 
@@ -33,13 +33,17 @@ class Update extends Component {
     });
   };
 
+
   getRecord() {
     API.getOneRecord(this.props.match.params.id)
       .then(res => {
         this.setState({
           records: res.data
         });
-        const timeStamp = moment.utc(this.state.records.date).tz("America/Denver").format();
+        const timeStamp = moment
+          .utc(this.state.records.date)
+          .tz("America/Denver")
+          .format();
         let date = timeStamp.split("T", 1);
         let dateX = date[0].split("-");
         let dateY = dateX.reverse();
@@ -87,7 +91,9 @@ class Update extends Component {
             <strong>Date:</strong> {this.state.date}, <strong>Time:</strong>{" "}
             {this.state.time}, <strong>Value:</strong>{" "}
             {this.state.records.glucose}
-            <p><strong>Enter an updated value below:</strong></p>
+            <p>
+              <strong>Enter an updated value below:</strong>
+            </p>
             <Form>
               <FormGroup>
                 <Input
@@ -96,9 +102,16 @@ class Update extends Component {
                   onChange={this.handleInputChange}
                   placeholder={"Updated glucose value"}
                 />
-                <Button onClick={() => this.editRecord(this.state.records._id)}>
+                <Button>Update</Button>
+                <Link
+                className="btn-primary btn mr-2"
+                to={"/Search/"}
+                onClick={() => this.editRecord(this.state.records._id)}> 
+                  Update Test
+                </Link>
+                {/* <Button onClick={() => this.editRecord(this.state.records._id)}>
                   Update
-                </Button>
+                </Button> */}
               </FormGroup>
             </Form>
           </Col>
