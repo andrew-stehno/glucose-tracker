@@ -18,7 +18,7 @@ function SearchResults(props) {
       {props.editData.length ? (
         <ListGroup>
           {props.editData.map(info => (
-            <ListGroupItem className="p-0">
+            <ListGroupItem className="p-0 mb-5">
               <Card className="mb-3">
                 <CardHeader>
                   {" "}
