@@ -10,6 +10,7 @@ import SearchResults from "../../components/SearchResults/SearchResults";
 import "moment-timezone";
 import moment from "moment-timezone";
 import "./style.css";
+import { BrowserRouter } from "react-router-dom";
 
 const withMainHOC = Component => {
   return function(props) {
@@ -27,7 +28,7 @@ class Search extends Component {
       chartData: []
     };
   }
-
+  
   componentDidUpdate(prevProps) {
     if (!prevProps.user && this.props.user) {
       this.getFromDatabase()
@@ -106,6 +107,7 @@ class Search extends Component {
   render() {
     return (
       <div>
+        <BrowserRouter forceRefresh={true}/>
         <Container>
           <Row>
             <Col md="3" sm="6">
@@ -139,6 +141,7 @@ class Search extends Component {
               <SearchResults
                 editData={this.state.chartData}
                 delete={this.delete}
+                windowReload={this.windowReload}
               />
             </Col>
           </Row>

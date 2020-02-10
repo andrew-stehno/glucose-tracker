@@ -10,7 +10,7 @@ import {
   FormGroup,
   Input
 } from "reactstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect, BrowserRouter } from "react-router-dom";
 import "moment-timezone";
 import moment from "moment-timezone";
 import "./update.css";
@@ -34,13 +34,17 @@ class Update extends Component {
     });
   };
 
+
   getRecord() {
     API.getOneRecord(this.props.match.params.id)
       .then(res => {
         this.setState({
           records: res.data
         });
-        const timeStamp = moment.utc(this.state.records.date).tz("America/Denver").format();
+        const timeStamp = moment
+          .utc(this.state.records.date)
+          .tz("America/Denver")
+          .format();
         let date = timeStamp.split("T", 1);
         let dateX = date[0].split("-");
         let dateY = dateX.reverse();
