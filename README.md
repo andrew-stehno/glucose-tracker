@@ -1,6 +1,6 @@
 # Sugar Pin
 
-![Your Sugar Pin](./image/chart2.png)
+![Your Sugar Pin](./Image/chart2.png)
 
 ## About This Project
 
