@@ -21,8 +21,8 @@ const footer = () => {
               best life. All you have to do is take action and stick with it.
             </p> */}
           {/* </Col> */}
-          <Col md="4">
-            <h5 className="title">Resources:</h5>
+          {/* <Col md="3">
+          <h5 className="title">Resources</h5>
             <ul>
               <li className="list-unstyled">
                 <a
@@ -86,7 +86,7 @@ const footer = () => {
                 </a>
               </li>
             </ul>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
       <div className="footer-copyright text-center py-3">
