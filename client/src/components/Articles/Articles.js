@@ -28,7 +28,7 @@ const Article = props => {
                 className="cardImg"
               />
               <CardImgOverlay>
-                <Row>
+                {/* <Row>
                   <Col  sm="4" lg="4" md="12">
                     <CardText className="cardTextMain">
                       {" "}
@@ -44,7 +44,7 @@ const Article = props => {
                       life, all you have to do is take action and stick with it.
                     </CardText>
                   </Col>
-                </Row>
+                </Row> */}
                 {/* <CardTitle>Example</CardTitle> */}
               </CardImgOverlay>
             </Card>
