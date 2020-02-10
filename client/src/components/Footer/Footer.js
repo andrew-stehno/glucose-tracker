@@ -21,7 +21,7 @@ const footer = () => {
               best life. All you have to do is take action and stick with it.
             </p> */}
           {/* </Col> */}
-          <Col md="3">
+          {/* <Col md="3">
           <h5 className="title">Resources</h5>
             <ul>
               <li className="list-unstyled">
@@ -63,26 +63,26 @@ const footer = () => {
             <ul>
               <li className="list-unstyled">
                 <a href="https://www.diabetes.org/">
-                  https://www.diabetes.org/
+                  www.diabetes.org/
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.cdc.gov/diabetes/index.html">
-                  https://www.cdc.gov/diabetes/index.html
+                  www.cdc.gov/diabetes/index.html
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.diabetesselfmanagement.com/">
-                  https://www.diabetesselfmanagement.com/
+                  www.diabetesselfmanagement.com/
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.diabetesdaily.com/">
-                  https://www.diabetesdaily.com/
+                  www.diabetesdaily.com/
                 </a>
               </li>
             </ul>
-          </Col>
+          </Col> */}
         </Row>
       </Container>
       <div className="footer-copyright text-center py-3">
