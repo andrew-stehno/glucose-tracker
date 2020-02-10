@@ -3,10 +3,6 @@ import {
   Card,
   CardImg,
   CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
   Container,
   Col,
   Row,
@@ -82,22 +78,22 @@ const Article = props => {
             <h5 className="title mt-5">Links</h5>
             <ul>
               <li className="list-unstyled">
-                <a href="https://www.diabetes.org/">www.diabetes.org/</a>
+                <a href="https://www.diabetes.org/">
+                  American Diabetes Association
+                </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.cdc.gov/diabetes/index.html">
-                  www.cdc.gov/diabetes/index.html
+                  Center for Disease Control
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.diabetesselfmanagement.com/">
-                  www.diabetesselfmanagement.com/
+                  Diabetes Self Management
                 </a>
               </li>
               <li className="list-unstyled">
-                <a href="https://www.diabetesdaily.com/">
-                  www.diabetesdaily.com/
-                </a>
+                <a href="https://www.diabetesdaily.com/">Diabetes Daily</a>
               </li>
             </ul>
           </Col>

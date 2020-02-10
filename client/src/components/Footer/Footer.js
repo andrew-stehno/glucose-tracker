@@ -8,8 +8,8 @@ const footer = () => {
       <Container className="text-center text-md-left">
         <Row>
           {/* <Col md="6"> */}
-            {/* <h5 className="title">Resources</h5> */}
-            {/* <p>
+          {/* <h5 className="title">Resources</h5> */}
+          {/* <p>
               No matter where you are in your fight, here’s where you need to
               be. Whether you’ve been newly diagnosed, have been fighting
               against type 1 or type 2 diabetes for a while, or are helping a
@@ -28,6 +28,7 @@ const footer = () => {
                 <a
                   href="https://www.diabetesselfmanagement.com/education/diabetes-101/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Diabetes 101
                 </a>
@@ -36,6 +37,7 @@ const footer = () => {
                 <a
                   href="https://www.diabetesdaily.com/blog/diabetes-eye-screenings-why-they-are-important-and-challenging-639862/"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Diabetes and your eyes
                 </a>
@@ -44,6 +46,7 @@ const footer = () => {
                 <a
                   href="https://diatribe.org/diabetes-blogs-and-forums"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   diaTribe Learn
                 </a>
@@ -52,33 +55,34 @@ const footer = () => {
                 <a
                   href="https://www.cdc.gov/diabetes/basics/diabetes.html"
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   The Basics
                 </a>
               </li>
             </ul>
           </Col>
-          <Col md="3">
-          <h5 className="title">Links</h5>
+          <Col md="4">
+            <h5 className="title">Links:</h5>
             <ul>
               <li className="list-unstyled">
                 <a href="https://www.diabetes.org/">
-                  www.diabetes.org/
+                  American Diabetes Association
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.cdc.gov/diabetes/index.html">
-                  www.cdc.gov/diabetes/index.html
+                  Center for Disease Control
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.diabetesselfmanagement.com/">
-                  www.diabetesselfmanagement.com/
+                  Diabetes Self Management
                 </a>
               </li>
               <li className="list-unstyled">
                 <a href="https://www.diabetesdaily.com/">
-                  www.diabetesdaily.com/
+                  Diabetes Daily
                 </a>
               </li>
             </ul>
@@ -90,6 +94,12 @@ const footer = () => {
           <p>
             Copyright Andrew Stehno, Matt Wigdahl, Luke Pettit, Tyler Stewart
             &copy;
+          </p>
+          <p className="disclaimer">
+            WARNING!!! The Content is not intended to be a substitute for
+            professional medical advice, diagnosis, or treatment. Always seek
+            the advice of your physician or other qualified health provider with
+            any questions you may have regarding a medical condition.
           </p>
         </Container>
       </div>

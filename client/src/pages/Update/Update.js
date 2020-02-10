@@ -10,9 +10,10 @@ import {
   FormGroup,
   Input
 } from "reactstrap";
-import { Link, Redirect, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "moment-timezone";
 import moment from "moment-timezone";
+import "./update.css";
 
 class Update extends Component {
   state = {
@@ -84,44 +85,45 @@ class Update extends Component {
     return (
       <Container>
         <Row>
-          <Col md="3">
-            <ProfileCard />
+          <Col md="4">
+            <ProfileCard/>
           </Col>
-          <Col md="9">
+          <Col md="8">
             <strong>Date:</strong> {this.state.date}, <strong>Time:</strong>{" "}
             {this.state.time}, <strong>Value:</strong>{" "}
             {this.state.records.glucose}
-            <p>
-              <strong>Enter an updated value below:</strong>
-            </p>
+            <p><strong>Enter an updated value below:</strong></p>
+
             <Form>
               <FormGroup>
-                <Input
+                <Input id="updateGlucose"
                   name="updatedGlucose"
                   value={this.state.updatedGlucose}
                   onChange={this.handleInputChange}
                   placeholder={"Updated glucose value"}
+
                 />
-                <Button>Update</Button>
-                <Link
-                className="btn-primary btn mr-2"
-                to={"/Search/"}
-                onClick={() => this.editRecord(this.state.records._id)}> 
-                  Update Test
-                </Link>
-                {/* <Button onClick={() => this.editRecord(this.state.records._id)}>
+
+                <Button id="button" onClick={() => this.editRecord(this.state.records._id)}>
                   Update
-                </Button> */}
+                </Button>
+                <Link id="link" to={"/Search"}>Back to Search Page.</Link>
               </FormGroup>
             </Form>
           </Col>
         </Row>
-        <Row>
-          <Link to={"/Search"}>Back to Search Page.</Link>
-        </Row>
+        
       </Container>
     );
   }
 }
 
 export default Update;
+
+
+
+
+
+
+
+
