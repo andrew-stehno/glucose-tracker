@@ -8,7 +8,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Button
 } from "reactstrap";
 import "./NavBar.css";
 
@@ -47,17 +48,17 @@ const navBar = props => {
 
             <NavItem>
               {!isAuthenticated && (
-                <NavLink onClick={() => loginWithRedirect({})}>
+                <Button onClick={() => loginWithRedirect({})}>
                   Log in
-                </NavLink>
+                </Button>
               )}
             </NavItem>
 
             <NavItem>
               {isAuthenticated && (
-                <NavLink onClick={() => logout()}>
+                <Button className="btn btn-primary" onClick={() => logout()}>
                   Log out
-                </NavLink>
+                </Button>
               )}
             </NavItem>
           </Nav>
