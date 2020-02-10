@@ -8,8 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Button
+  NavLink
 } from "reactstrap";
 import "./NavBar.css";
 
@@ -72,7 +71,7 @@ const navBar = props => {
                   onClick={() => loginWithRedirect({})}
                 >
                   Log in
-                </Button>
+                </NavLink>
               )}
             </NavItem>
 
@@ -83,7 +82,7 @@ const navBar = props => {
                   onClick={() => logout()}
                 >
                   Log out
-                </Button>
+                </NavLink>
               )}
             </NavItem>
           </Nav>
