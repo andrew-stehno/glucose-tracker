@@ -3,10 +3,6 @@ import {
   Card,
   CardImg,
   CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
   Container,
   Col,
   Row,
@@ -35,7 +31,7 @@ const Article = props => {
                         {" "}
                         Welcome To Sugar Pin! &reg;
                         <br />
-                        Please sign in to view your data!
+                        Please sign in to track your blood sugar levels!
                       </h1>
                     </CardText>
                   </Col>

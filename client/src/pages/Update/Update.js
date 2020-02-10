@@ -10,7 +10,7 @@ import {
   FormGroup,
   Input
 } from "reactstrap";
-import { Link, Redirect, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "moment-timezone";
 import moment from "moment-timezone";
 import "./update.css";
