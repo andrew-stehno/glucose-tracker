@@ -2,12 +2,7 @@ import React from "react";
 import {
   Container,
   ListGroup,
-  ListGroupItem,
-  Button,
-  Card,
-  CardBody,
-  CardTitle,
-  CardHeader
+  ListGroupItem
 } from "reactstrap";
 import "./style.css";
 import { Link } from "react-router-dom";

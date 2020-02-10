@@ -44,7 +44,7 @@ const Article = props => {
               <li className="list-unstyled">
                 <a
                   href="https://www.diabetesselfmanagement.com/education/diabetes-101/"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   Diabetes 101
                 </a>
@@ -52,7 +52,7 @@ const Article = props => {
               <li className="list-unstyled">
                 <a
                   href="https://www.diabetesdaily.com/blog/diabetes-eye-screenings-why-they-are-important-and-challenging-639862/"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   Diabetes and your eyes
                 </a>
@@ -60,7 +60,7 @@ const Article = props => {
               <li className="list-unstyled">
                 <a
                   href="https://diatribe.org/diabetes-blogs-and-forums"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   diaTribe Learn
                 </a>
@@ -68,7 +68,7 @@ const Article = props => {
               <li className="list-unstyled">
                 <a
                   href="https://www.cdc.gov/diabetes/basics/diabetes.html"
-                  target="_blank"
+                  target="_blank" rel="noopener noreferrer"
                 >
                   The Basics
                 </a>
