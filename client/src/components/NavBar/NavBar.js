@@ -25,10 +25,14 @@ const navBar = props => {
 
   return (
     <div>
-      <Navbar className="navBar mb-5" color="blue" light expand="md">
+      <Navbar className="navBar mb-5" color="blue" expand="md">
         <NavbarBrand>
           <a href="/">
-            <img width="200" src="../images/sugar_pin_logo.png" alt="pricked finger logo" />
+            <img
+              width="200"
+              src="../images/sugar_pin_logo.png"
+              alt="pricked finger logo"
+            />
           </a>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -36,18 +40,36 @@ const navBar = props => {
           <Nav className="ml-auto" navbar>
             {isAuthenticated && (
               <>
-                <NavLink href="/Main">Your Sugar Pin</NavLink>
-                <NavLink href="/Search">Search</NavLink>
+                <NavLink
+                  id="navlinktext"
+                  href="/Main"
+                >
+                  Your Sugar Pin
+                </NavLink>
+                <NavLink
+                  id="navlinktext"
+                  href="/Search"
+                >
+                  Search
+                </NavLink>
               </>
             )}
 
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink
+                id="navlinktext"
+                href="/"
+              >
+                Home
+              </NavLink>
             </NavItem>
 
             <NavItem>
               {!isAuthenticated && (
-                <NavLink onClick={() => loginWithRedirect({})}>
+                <NavLink
+                  id="navlinktext"
+                  onClick={() => loginWithRedirect({})}
+                >
                   Log in
                 </NavLink>
               )}
@@ -55,7 +77,10 @@ const navBar = props => {
 
             <NavItem>
               {isAuthenticated && (
-                <NavLink onClick={() => logout()}>
+                <NavLink
+                  id="navlinktext"
+                  onClick={() => logout()}
+                >
                   Log out
                 </NavLink>
               )}
