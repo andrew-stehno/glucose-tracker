@@ -1,5 +1,7 @@
 # Sugar Pin
 
+![Your Sugar Pin](./image/chart2.png)
+
 ## About This Project
 
 Sugar Pin is a React App which allows diabetics to track daily blood sugar levels in a convenient app.  Pins are dropped into a graph displaying trends throughout the day.  High and low norms are listed aswell, any levels which are out of these norms will prompt a gentle suggestion.  Users are able to search and edit past data as well.
