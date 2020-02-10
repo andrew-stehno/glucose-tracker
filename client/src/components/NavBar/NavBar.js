@@ -8,7 +8,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Button
 } from "reactstrap";
 import "./NavBar.css";
 
@@ -27,7 +28,7 @@ const navBar = props => {
     <div>
       <Navbar className="navBar mb-5" color="blue" light expand="md">
         <NavbarBrand>
-          <a href="/Main">
+          <a href="/">
             <img width="200" src="../images/sugar_pin_logo.png" alt="pricked finger logo" />
           </a>
         </NavbarBrand>
@@ -47,17 +48,17 @@ const navBar = props => {
 
             <NavItem>
               {!isAuthenticated && (
-                <NavLink onClick={() => loginWithRedirect({})}>
+                <Button onClick={() => loginWithRedirect({})}>
                   Log in
-                </NavLink>
+                </Button>
               )}
             </NavItem>
 
             <NavItem>
               {isAuthenticated && (
-                <NavLink onClick={() => logout()}>
+                <Button className="btn btn-primary" onClick={() => logout()}>
                   Log out
-                </NavLink>
+                </Button>
               )}
             </NavItem>
           </Nav>

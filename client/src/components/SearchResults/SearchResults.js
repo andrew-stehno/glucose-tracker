@@ -18,7 +18,7 @@ function SearchResults(props) {
       {props.editData.length ? (
         <ListGroup>
           {props.editData.map(info => (
-            <ListGroupItem className="p-0">
+            <ListGroupItem className="p-0 mb-5">
               <Card className="mb-3">
                 <CardHeader>
                   {" "}
@@ -30,13 +30,13 @@ function SearchResults(props) {
                   <CardTitle>
                     <strong>Manage Item:</strong>
                     <Button color="danger" onClick={() => props.delete(info.id)}>
-                      Delete
+                      X
                     </Button>
                     <Link
                       className="btn-primary btn mr-2"
                       to={"/update/" + info.id}
                     >
-                      Update
+                      Edit
                     </Link>
                   </CardTitle>
                 </CardBody>
