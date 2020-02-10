@@ -11,8 +11,13 @@ strong {
     background-color: #49c6e5;
 }
 
-.list-group-item, .list-group {
-    border:0;
+.links {
+    float: right;
+}
+
+#del {
+    color: red;
+    margin-left: 10px;
 }
 
 .noData {

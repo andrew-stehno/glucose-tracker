@@ -2,12 +2,7 @@ import React from "react";
 import {
   Container,
   ListGroup,
-  ListGroupItem,
-  Button,
-  Card,
-  CardBody,
-  CardTitle,
-  CardHeader
+  ListGroupItem
 } from "reactstrap";
 import "./style.css";
 import { Link } from "react-router-dom";
@@ -18,8 +13,20 @@ function SearchResults(props) {
       {props.editData.length ? (
         <ListGroup>
           {props.editData.map(info => (
-            <ListGroupItem className="p-0 mb-5">
-              <Card className="mb-3">
+            <ListGroupItem className="p-3">
+              {" "}
+              <strong>Date:</strong> {info.calender[0]}, <strong>Time:</strong>{" "}
+              {info.date}, <strong>Value:</strong> {info.value}
+              <div className="links">
+                <Link
+                  // className="btn-primary btn mr-2"
+                  to={"/update/" + info.id}
+                >
+                  Update
+                </Link>
+                <Link id="del" onClick={() => props.delete(info.id)}>Delete</Link>
+              </div>
+              {/* <Card className="mb-3">
                 <CardHeader>
                   {" "}
                   <strong>Date:</strong> {info.calender[0]},{" "}
@@ -40,7 +47,7 @@ function SearchResults(props) {
                     </Link>
                   </CardTitle>
                 </CardBody>
-              </Card>
+              </Card> */}
             </ListGroupItem>
           ))}
         </ListGroup>

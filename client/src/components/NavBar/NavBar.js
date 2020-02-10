@@ -8,8 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Button
+  NavLink
 } from "reactstrap";
 import "./NavBar.css";
 
@@ -26,10 +25,14 @@ const navBar = props => {
 
   return (
     <div>
-      <Navbar className="navBar mb-5" color="blue" light expand="md">
+      <Navbar className="navBar mb-5" color="blue" expand="md">
         <NavbarBrand>
           <a href="/">
-            <img width="200" src="../images/sugar_pin_logo.png" alt="pricked finger logo" />
+            <img
+              width="200"
+              src="../images/sugar_pin_logo.png"
+              alt="pricked finger logo"
+            />
           </a>
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -37,28 +40,49 @@ const navBar = props => {
           <Nav className="ml-auto" navbar>
             {isAuthenticated && (
               <>
-                <NavLink href="/Main">Your Sugar Pin</NavLink>
-                <NavLink href="/Search">Search</NavLink>
+                <NavLink
+                  id="navlinktext"
+                  href="/Main"
+                >
+                  Your Sugar Pin
+                </NavLink>
+                <NavLink
+                  id="navlinktext"
+                  href="/Search"
+                >
+                  Search
+                </NavLink>
               </>
             )}
 
             <NavItem>
-              <NavLink href="/">Home</NavLink>
+              <NavLink
+                id="navlinktext"
+                href="/"
+              >
+                Home
+              </NavLink>
             </NavItem>
 
             <NavItem>
               {!isAuthenticated && (
-                <Button onClick={() => loginWithRedirect({})}>
+                <NavLink
+                  id="navlinktext"
+                  onClick={() => loginWithRedirect({})}
+                >
                   Log in
-                </Button>
+                </NavLink>
               )}
             </NavItem>
 
             <NavItem>
               {isAuthenticated && (
-                <Button className="btn btn-primary" onClick={() => logout()}>
+                <NavLink
+                  id="navlinktext"
+                  onClick={() => logout()}
+                >
                   Log out
-                </Button>
+                </NavLink>
               )}
             </NavItem>
           </Nav>
