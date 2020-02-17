@@ -19,8 +19,8 @@ const Article = props => {
             <Card inverse className="mt-5">
               <CardImg
                 width="100%"
-                src="https://www.niddk.nih.gov/-/media/Images/Health-Information/Diabetes/diabetes-monitor-fruits-vegetables-small.png?la=en&hash=49F9B6874C5B57A4F87DCF5973301470"
-                alt="Card image cap"
+                src="../images/fruit-bowl.jpg"
+                alt="bowl of fruit and stethoscope"
                 className="cardImg mx-auto"
               />
               <CardImgOverlay>
