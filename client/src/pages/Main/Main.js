@@ -89,7 +89,7 @@ class Main extends React.Component {
           let realTime = setTime.join(":");
           let newObj = {
             value: item.glucose,
-            high: 160,
+            high: 180,
             low: 100,
             date: realTime
           };
