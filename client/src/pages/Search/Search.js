@@ -80,7 +80,7 @@ class Search extends Component {
           let newObj = {
             id: item._id,
             value: item.glucose,
-            high: 160,
+            high: 180,
             low: 100,
             date: setTime,
             calender: date
