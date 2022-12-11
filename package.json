@@ -23,7 +23,7 @@
     "@auth0/auth0-spa-js": "^1.6.2",
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.8.9",
     "morgan": "^1.9.1",
